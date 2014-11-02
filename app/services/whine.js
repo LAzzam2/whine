@@ -13,8 +13,6 @@ exports.browse = function (page, pageSize, callback) {
 }
 
 exports.create = function (obj, callback) {
-    var whine = Whine();
-    whine.contents = obj;
-    success = true;
+    var whine = Whine(obj);
     whine.save(callback);
 }
