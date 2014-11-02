@@ -2,7 +2,7 @@
     "name": "whine",
     "description": "Quit bitchin™",
     "version": "0.0.1",
-    "main": "app/main.js",
+    "main": "app/server.js",
     "repository" : {
         "type" : "git",
         "url" : "https://github.com/LAzzam2/whine.git"
