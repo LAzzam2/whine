@@ -1,0 +1,12 @@
+{
+  "name": "Whine",
+    "version": "1.0.0",
+    "dependencies": {
+          //the value is the version you want,
+         // if you enter null it grabs the latest release
+        "jquery": "1.9",
+        "backbone": null,
+        "underscore": null,
+        "requirejs": null
+    }
+}
