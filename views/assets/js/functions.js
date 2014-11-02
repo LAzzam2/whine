@@ -13,14 +13,28 @@
 	var site = {
 		init: function(){
 			site.pullWhine();
+			site.clickFunc();
 		},
 		pullWhine: function(){
 			$.getJSON( "api/whines/", function( data ) {
-				whine = data[Math.floor(Math.random() * data.length-1)+1].contents;
-			  	console.log(whine);
-			  	$('#whine>h2').html(whine);
+				
 			});
 		},
+		postWhine: function(){
+			content = {
+				'contents': $('textarea').html()
+			}
+			$.post( "api/whines", content, function( data ) {
+				console.log('passed');
+			});
+		},
+		clickFunc: function(){
+			$('input:submit').on('click', function( event ){
+				event.preventDefault();  
+				console.log('whine sent');
+				site.postWhine();
+			})
+		}
 	}
 	
 	$(document).ready(function (){
