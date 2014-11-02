@@ -9,6 +9,12 @@ var WhineSchema = new mongoose.Schema({
     geo: {type: [Number], index: '2d'}
 });
 
-WhineSchema.plugin(random)
+WhineSchema.plugin(random);
 
-module.exports = mongoose.model('Whine', WhineSchema);
+Whine = mongoose.model('Whine', WhineSchema);
+
+Whine.syncRandom(function (err, result) {
+  console.log(result.updated);
+});
+
+module.exports = Whine
