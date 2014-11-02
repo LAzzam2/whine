@@ -17,6 +17,7 @@
 			skrollr.init({
 				forceHeight: false
 			});
+			$('form').css('height',$('form').height());
 			// site.scrollHandler();
 		},
 		scrollHandler: function(){
@@ -83,16 +84,20 @@
 			disable_scroll();
 		},
 		pullWhine: function(){
-			$.getJSON( "api/whines/random", function( data ) {
-				whine = data.contents;
-				by = data.by;
-			  	console.log(whine);
-			  	$('#whine>h2').html(whine);
-			  	if(by){
-			  		$('#whine').prepend('<h3></h3>')
-			  		$('#whine>h3').html(by);
-			  	}
-			});
+			$('#whine').fadeOut('slow', function(){
+				$.getJSON( "api/whines/random", function( data ) {
+					whine = data.contents;
+					by = data.by;
+				  	console.log(whine);
+				  	$('#whine>h2').html(whine);
+				  	if(by){
+				  		$('#whine>h3').remove();
+				  		$('#whine').prepend('<h3></h3>')
+				  		$('#whine>h3').html(by);
+				  		$('#whine').fadeIn();
+				  	}
+				});
+			})
 		},
 		postWhine: function(){
 			$.ajax({
@@ -107,7 +112,7 @@
 			    },
 			    dataType: 'json',
 			    success: function (data) {
-			        console.log(data);
+			        site.successPost();
 			    }
 			});
 		},
@@ -120,7 +125,23 @@
 			});
 			$('button').on('click', function(){
 				site.pullWhine();
-			})
+			});
+			$('#drop').on('click', function(){
+			        $('html,body').animate({
+			          scrollTop: $(window).height()
+			        }, 1500);
+			});
+		},
+		successPost: function(){
+			$('input:submit').css('pointer-events','none');
+			$('.wrap h1, input, form').animate({
+				opacity: '0'
+			}, 1000, function(){
+				$('form').height(0);
+				$('.wrap h1').html('Thanks for whining here instead, you bitch.');
+				$('.wrap h1').css('text-align','center');
+				$('.wrap h1').animate({opacity: '1'}, 1000);
+			});
 		}
 	}
 
