@@ -12,6 +12,7 @@
         "mongoose": "3.x",
         "bower": "1.x",
         "underscore": "1.x",
-        "async": "0.x"
+        "async": "0.x",
+        "body-parser": "1.x"
     }
 }

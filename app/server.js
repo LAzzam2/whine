@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser')
 
 var whinesRouter = require('./views/whines')
 
@@ -25,6 +26,7 @@ if (process.env.NODE_ENV === 'production') {
  * Add routes
  */
 var app = express();
+app.use(bodyParser.json())
 app.use('/', express.static(__dirname + '../../views'));
 app.use('/api/whines', whinesRouter);
 

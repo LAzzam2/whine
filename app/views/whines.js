@@ -19,9 +19,9 @@ whinesRouter.route('/')
     })
 })
 .post(function(req, res) {
-    data = req.body.contents
+    data = req.body
     data['ip'] = req.ip
-    whineService.create(req.body.contents, function(err) {
+    whineService.create(data, function(err) {
         if (err) {
             res.status(500);
         } else {

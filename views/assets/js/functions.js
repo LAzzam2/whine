@@ -85,11 +85,11 @@
 			$.ajax({
 			    url: 'api/whines',
 			    type: 'post',
-			    data: {
+			    data: JSON.stringify({
 			        content: ''+$('textarea').html()+''
-			    },
+			    }),
 			    headers: {
-			        "Content-Type": 'application/json', 
+			        "Content-Type": 'application/json',
 			    },
 			    dataType: 'json',
 			    success: function (data) {
@@ -99,23 +99,23 @@
 		},
 		clickFunc: function(){
 			$('input:submit').on('click', function( event ){
-				event.preventDefault();  
+				event.preventDefault();
 				console.log('whine sent');
 				site.postWhine();
 			})
 		}
 	}
-	
+
 	$(document).ready(function (){
 		site.init();
 	});
-	
+
 	$(window).load(function() {
-		
+
 	});
-	
+
 	$(window).resize(function() {
-		
+
 	});
 
 })(window.jQuery);
