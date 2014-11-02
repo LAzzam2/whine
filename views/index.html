@@ -78,12 +78,15 @@
 <body>
 
 <div class="wrapper">
+  <div id="logo">
+    <img src="assets/img/whine.svg" alt="whine" />
+  </div>
         
   <div id="homeHero" class="section">
-    <div class="wrap">
+    <div class="wrap" data-center="opacity: 1; top: 50%;" data-top="opacity: 0; top: 40%;">
       <h1>Everyone Bitches on social media. That's not okay. Bitch here instead.</h1>
-      <form>
-          <input name="name" placeholder="name" />
+      <form autocomplete="off">
+          <input class="name" name="name" placeholder="name" />
           <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
           <input type="submit">
       </form>
@@ -91,7 +94,7 @@
   </div>
 
   <div id="bitchinSection" class="section">
-    <div id="whine" class="wrap">
+    <div id="whine" class="wrap" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
       <h2></h2>
       <button>Next Whine</button>
     </div>
@@ -105,6 +108,7 @@
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>window.jQuery || document.write("<script src='assets/js/libs/jquery-1.11.0.min.js'>\x3C/script>")</script>
+<script src="assets/js/libs/skrollr.js"></script>
 
 <!-- this is where we put our custom functions -->
 <!-- don't forget to concatenate and minify if needed -->

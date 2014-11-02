@@ -14,6 +14,9 @@
 		init: function(){
 			site.pullWhine();
 			site.clickFunc();
+			skrollr.init({
+				forceHeight: false
+			});
 			// site.scrollHandler();
 		},
 		scrollHandler: function(){
@@ -80,10 +83,15 @@
 			disable_scroll();
 		},
 		pullWhine: function(){
-			$.getJSON( "api/whines", function( data ) {
-				whine = data[0].contents;
+			$.getJSON( "api/whines/random", function( data ) {
+				whine = data.contents;
+				by = data.by;
 			  	console.log(whine);
 			  	$('#whine>h2').html(whine);
+			  	if(by){
+			  		$('#whine').prepend('<h3></h3>')
+			  		$('#whine>h3').html(by);
+			  	}
 			});
 		},
 		postWhine: function(){
@@ -91,7 +99,8 @@
 			    url: 'api/whines',
 			    type: 'post',
 			    data: JSON.stringify({
-			        contents: ''+$('textarea').val()+''
+			        contents: ''+$('textarea').val()+'',
+			        by: ''+$('.name').val()+''
 			    }),
 			    headers: {
 			        "Content-Type": 'application/json',
@@ -105,7 +114,12 @@
 		clickFunc: function(){
 			$('input:submit').on('click', function( event ){
 				event.preventDefault();
-				site.postWhine();
+				if($('textarea').val()){
+					site.postWhine();
+				}
+			});
+			$('button').on('click', function(){
+				site.pullWhine();
 			})
 		}
 	}
