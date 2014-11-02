@@ -33,8 +33,9 @@ router.use(function(req, res, next) {
 });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+home_router.use(express.static(__dirname + '/views'));
 home_router.get('/', function(req, res) {
-	res.sendfile('views/index.html', {root: __dirname })
+	res.sendfile('views/index.html', {root: __dirname });
 });
 
 // more routes for our API will happen here
