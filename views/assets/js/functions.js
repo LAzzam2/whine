@@ -80,13 +80,18 @@
 			disable_scroll();
 		},
 		pullWhine: function(){
+			$.getJSON( "api/whines", function( data ) {
+				whine = data[0].contents;
+			  	console.log(whine);
+			  	$('#whine>h2').html(whine);
+			});
 		},
 		postWhine: function(){
 			$.ajax({
 			    url: 'api/whines',
 			    type: 'post',
 			    data: JSON.stringify({
-			        content: ''+$('textarea').val()+''
+			        contents: ''+$('textarea').val()+''
 			    }),
 			    headers: {
 			        "Content-Type": 'application/json',
