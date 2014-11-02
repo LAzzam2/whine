@@ -16,16 +16,21 @@
 			site.clickFunc();
 		},
 		pullWhine: function(){
-			$.getJSON( "api/whines/", function( data ) {
-				
-			});
 		},
 		postWhine: function(){
-			content = {
-				'contents': $('textarea').html()
-			}
-			$.post( "api/whines", content, function( data ) {
-				console.log('passed');
+			$.ajax({
+			    url: 'api/whines',
+			    type: 'post',
+			    data: {
+			        content: ''+$('textarea').html()+''
+			    },
+			    headers: {
+			        "Content-Type": 'application/json', 
+			    },
+			    dataType: 'json',
+			    success: function (data) {
+			        console.log(data);
+			    }
 			});
 		},
 		clickFunc: function(){
