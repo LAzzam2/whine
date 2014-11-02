@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
  */
 var app = express();
 app.use('/', express.static(__dirname + '../../views'));
-app.use('/whines', whinesRouter);
+app.use('/api/whines', whinesRouter);
 
 /*
  * Configure app port and run
