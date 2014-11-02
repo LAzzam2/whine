@@ -6,7 +6,9 @@ var WhineSchema = new mongoose.Schema({
     submitted: {type: Date, index: true, default: Date.now},
     by: {type: String, index: true},
     ip: {type: String, index: true},
-    geo: {type: [Number], index: '2d'}
+    loc: {type: [Number], index: '2dsphere'},
+    flagCount: {type: Number, default: 0},
+    tags: {type: [String], index: true}
 });
 
 WhineSchema.plugin(random);
