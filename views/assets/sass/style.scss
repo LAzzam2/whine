@@ -68,11 +68,11 @@ html, body, .wrapper {
 		position: absolute;
 		top: 50%; left: 50%;
 		@include center(-50%,-50%);
-		max-width: 960px;
-		width: 100%;
+		max-width: 760px;
+		width: 90%;
 		z-index: 5;
 		h1, h2 {
-			font-size: 2em;
+			font-size: 1.8em;
 			color: white;
 			margin: 10px 0px;
 			a {

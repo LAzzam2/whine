@@ -118,13 +118,13 @@ html, body, .wrapper {
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  max-width: 960px;
-  width: 100%;
+  max-width: 760px;
+  width: 90%;
   z-index: 5;
 }
 /* line 74, ../sass/style.scss */
 .section .wrap h1, .section .wrap h2 {
-  font-size: 2em;
+  font-size: 1.8em;
   color: white;
   margin: 10px 0px;
 }
