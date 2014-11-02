@@ -46,17 +46,18 @@ var app = express();
 app.use(bodyParser.json())
 app.use('/', express.static(__dirname + '../../views'));
 app.use('/api/whines', whinesRouter);
+app.use('/api/whines', whinesRouter);
 
 /*
  * Add rate limiting if production is enabled
  */
-if (process.env.NODE_ENV === 'production') {
+if (process.env.LIMIT === 'true') {
     var limiter = require('express-limiter')(app, redisClient)
     limiter({
       path: '/api/whines',
       method: 'post',
       lookup: ['connection.remoteAddress'],
-      // 150 requests per hour
+      // 2 requests per hour
       total: 2,
       expire: 1000 * 60 * 60
     })

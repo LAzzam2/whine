@@ -4,8 +4,8 @@ exports.read = function (id, callback) {
      Whine.findById(id, callback);
 }
 
-exports.browse = function (page, pageSize, callback) {
-    Whine.find()
+exports.browse = function (filters, page, pageSize, callback) {
+    Whine.find(filters)
     .sort('-submitted')
     .skip(page * pageSize)
     .limit(pageSize)
@@ -20,5 +20,16 @@ exports.create = function (obj, callback) {
 exports.random = function (callback) {
     Whine.findRandom()
     .limit(1)
+    .exec(callback);
+}
+
+exports.near = function (lat, lng, radius, page, pageSize, callback) {
+    Whine.find().near('loc', {
+        center: [lat, lng],
+        maxDistance: radius
+    })
+    .sort('-submitted')
+    .skip(page * pageSize)
+    .limit(pageSize)
     .exec(callback);
 }

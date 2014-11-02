@@ -1,21 +1,21 @@
 var express = require('express')
 var _ = require('underscore')
 var whineService = require('../services/whine')
+var whineResponder = require('./responders/whines')
 
 var whinesRouter = express.Router()
 
 whinesRouter.route('/')
 .get(function(req, res) {
-    whineService.browse(req.query.page || 0, req.query.perPage || 1, function(err, whines) {
+    whineService.browse({}, req.query.page || 0, req.query.perPage || 1, function(err, whines) {
         if (err) {
             res.status(500);
             res.json({message: "Something went horribly wrong."})
         } else {
-            _.each(whines, function(whine) {
-                delete whine['ip'];
-                delete whine['geo'];
+            results = _.map(whines, function(whine) {
+                return whineResponder.build(whine)
             })
-            res.json(whines)
+            res.json(results)
         }
     })
 })
@@ -44,10 +44,24 @@ whinesRouter.route('/random')
             if (!whine) {
                 res.status(500).json({message: "No whines yet to get"})
             } else {
-                delete whine['ip'];
-                delete whine['geo'];
-                res.json(whine)
+                result = whineResponder.build(whine)
+                res.json(result)
             }
+        }
+    })
+})
+
+whinesRouter.route('/near')
+.get(function(req, res) {
+    whineService.random(function(err, whines) {
+        if (err) {
+            res.status(500);
+            res.json({message: "Something went horribly wrong."})
+        } else {
+            results = _.map(whines, function(whine) {
+                return whineResponder.build(whine)
+            })
+            res.json(results)
         }
     })
 })
