@@ -125,7 +125,12 @@
 			});
 			$('button').on('click', function(){
 				site.pullWhine();
-			})
+			});
+			$('#drop').on('click', function(){
+			        $('html,body').animate({
+			          scrollTop: $(window).height()
+			        }, 1500);
+			});
 		},
 		successPost: function(){
 			$('input:submit').css('pointer-events','none');
