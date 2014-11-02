@@ -1,9 +1,8 @@
 var express = require('express');
-var winston = require('winston');
 var mongoose = require('mongoose');
 
-var whinesRouter = require('views/whines')
-var whineRouter = require('views/whine')
+var whinesRouter = require('./views/whines')
+var whineRouter = require('./views/whine')
 
 
 /*
@@ -14,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
     // Get user and pass from environment variables
     var mongoUser = process.env.MONGO_DB_USER
     var mongoPassword = process.env.MONGO_DB_PASSWORD
-    mongoose.connect('mongodb://proximus.modulusmongo.net:27017/Es3ovyvi' {
+    mongoose.connect('mongodb://proximus.modulusmongo.net:27017/Es3ovyvi', {
         user: process.env.MONGO_DB_USER,
         pass: process.env.MONGO_DB_PASSWORD,
     });
@@ -36,4 +35,3 @@ app.use('/static', express.static(__dirname + '/views'));
  */
 var port = process.env.PORT || 5555;
 app.listen(port);
-winston.log('app listening on port ' + port);

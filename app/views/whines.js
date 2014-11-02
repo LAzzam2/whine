@@ -1,9 +1,9 @@
 var express = require('express')
-var wineService - require('../services/whine')
+var wineService = require('../services/whine')
 
-var whinesRoute = express.Router()
+var whinesRouter = express.Router()
 
-whineRoute.get(function(req, res) {
+whinesRouter.get(function(req, res) {
     whineService.browse(req.query.page, req.query.perPage, function(err, whines) {
         if (err) {
             res.status(500);
@@ -13,4 +13,4 @@ whineRoute.get(function(req, res) {
     })
 });
 
-module.exports = whinesRoute
+module.exports = whinesRouter

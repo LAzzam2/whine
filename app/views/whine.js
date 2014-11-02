@@ -1,5 +1,5 @@
 var express = require('express')
-var wineService - require('../services/whine')
+var wineService = require('../services/whine')
 
 var whineRoute = express.Router()
 
