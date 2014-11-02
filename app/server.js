@@ -2,7 +2,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 
 var whinesRouter = require('./views/whines')
-var whineRouter = require('./views/whine')
 
 
 /*
@@ -26,9 +25,8 @@ if (process.env.NODE_ENV === 'production') {
  * Add routes
  */
 var app = express();
+app.use('/', express.static(__dirname + '/views'));
 app.use('/whines', whinesRouter);
-app.use('/whines/:whine_id', whineRouter);
-app.use('/static', express.static(__dirname + '/views'));
 
 /*
  * Configure app port and run

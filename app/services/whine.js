@@ -1,20 +1,18 @@
 var Whine = require('../models/whine')
 
-function read(id, callback) {
+exports.read = function (id, callback) {
      Whine.findById(id, callback);
 }
 
-function browse(page, pageSize, callback) {
-    Whine.find({}, {
-            skip: page * pageSize,
-            limit: pageSize,
-        }
-    ).sort({
-        submitted: "desc",
-    }).find(callback)
+exports.browse = function (page, pageSize, callback) {
+    Whine.find()
+    .sort('-submitted')
+    .skip(page * pageSize)
+    .limit(pageSize)
+    .exec(callback);
 }
 
-function create(obj, callback) {
+exports.create = function (obj, callback) {
     var whine = Whine();
     whine.contents = obj;
     success = true;
