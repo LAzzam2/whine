@@ -23,6 +23,7 @@ var port = process.env.PORT || 5555; 		// set our port
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router(); 				// get an instance of the express Router
+var home_router = express.Router();
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -32,9 +33,8 @@ router.use(function(req, res, next) {
 });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-	res.json({ message: 'hooray! welcome to our api!' });	
-	res.render('index.html');
+home_router.get('/', function(req, res) {
+	res.sendfile('views/index.html', {root: __dirname })
 });
 
 // more routes for our API will happen here
@@ -112,6 +112,7 @@ router.route('/whines/:whine_id')
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
+app.use('/', home_router);
 
 // START THE SERVER
 // =============================================================================
