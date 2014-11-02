@@ -86,7 +86,7 @@
 			    url: 'api/whines',
 			    type: 'post',
 			    data: JSON.stringify({
-			        content: ''+$('textarea').html()+''
+			        content: ''+$('textarea').val()+''
 			    }),
 			    headers: {
 			        "Content-Type": 'application/json',
@@ -100,7 +100,6 @@
 		clickFunc: function(){
 			$('input:submit').on('click', function( event ){
 				event.preventDefault();
-				console.log('whine sent');
 				site.postWhine();
 			})
 		}
