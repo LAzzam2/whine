@@ -128,6 +128,7 @@
 			})
 		},
 		successPost: function(){
+			$('input:submit').css('pointer-events','none');
 			$('.wrap h1, input, form').animate({
 				opacity: '0'
 			}, 1000, function(){
