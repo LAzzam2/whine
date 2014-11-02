@@ -1,0 +1,146 @@
+/* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
+body {font: 13px Helmet, Freesans, sans-serif;}
+
+/* Using local fonts? Check out Font Squirrel's webfont generator: http://www.fontsquirrel.com/tools/webfont-generator */
+
+/* We like off-black for text. */
+body, select, input, textarea {color: #333;}
+
+a {color: #03f;}
+a:hover {color: #69f;}
+
+/* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+ins {background-color: #fcd700; color: #000; text-decoration: none;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+/* Mozilla dosen't style place holders by default */
+input:-moz-placeholder { color:#a9a9a9; }
+textarea:-moz-placeholder { color:#a9a9a9; }
+
+@mixin center($n1, $n2){
+	transform: translate($n1,$n2);
+	-webkit-transform: translate($n1,$n2);
+	-moz-transform: translate($n1,$n2);
+	-ms-transform: translate($n1,$n2);
+}
+
+html, body, .wrapper {
+	height: 100%;
+	width: 100%;
+}
+#homeHero {
+ background: url(../img/homeHeroBG.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#bitchinSection {
+ background: url(../img/bitchinSectionBG.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.section:after {
+	content: '';
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background-color: rgba(0,0,0,.7);
+}
+.section {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,.4);
+	position: relative;
+	overflow: hidden;
+	.wrap {
+		position: absolute;
+		top: 50%; left: 50%;
+		@include center(-50%,-50%);
+		max-width: 960px;
+		width: 100%;
+		z-index: 5;
+		h1, h2 {
+			font-size: 2em;
+			color: white;
+			margin: 10px 0px;
+			a {
+				text-decoration: none;
+				color: white;
+			}
+		}
+		button, input[type=submit] {
+			position: absolute;
+			left: 50%;
+			@include center(-50%,0);
+			background: none;
+			border: none;
+			outline: 1px solid rgba(255,255,255,.4);
+			background-color: rgba(255,255,255,.1);
+			padding: 5px 0px;
+			width: 100%;
+			max-width: 150px;
+			margin-top: 25px;
+		}
+	}
+	form {
+		text-align: center;
+		input, textarea {
+			width: 100%;
+			margin-top: 25px;
+			background: none;
+			border: none;
+			outline: none;
+			color: white;
+		}
+		input[name=name]{
+			border-bottom: 1px solid white;
+			max-width: 50%;
+			padding-bottom: 5px;
+			float: left;
+		}
+		textarea {
+			height: 200px;
+			border: 1px solid white;
+			padding: 10px;
+		}
+	}
+	footer {
+		position: absolute;
+		bottom: -100px; left: 0;
+		width: 100%;
+		height: 100px;
+		background-color: white;
+	}
+	#whine {
+		h2 {
+			text-align: center;
+		}
+	}
+}
+
+
+
+/* Media queries
+-------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 480px) {
+	
+		
+}
+
+
+/* Print styles
+-------------------------------------------------------------------------------*/
+@media print {
+
+
+}
