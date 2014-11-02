@@ -11,10 +11,10 @@ a:hover {color: #69f;}
 
 /* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
 ::selection {
-  background: rgba(0,0,0,.1); /* WebKit/Blink Browsers */
+  background: rgba(255,255,255,.3); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: rgba(0,0,0,.1); /* Gecko Browsers */
+  background: rgba(255,255,255,.3); /* Gecko Browsers */
 }
 /*	j.mp/webkit-tap-highlight-color */
 a:link {-webkit-tap-highlight-color: #fcd700;} 
@@ -37,15 +37,22 @@ html, body, .wrapper {
 	height: 100%;
 	width: 100%;
 }
+#logo {
+	position: fixed;
+	top: 25px; left: 25px;
+	width: 150px;
+	height: auto;
+	z-index: 10;
+}
 #homeHero {
- background: url(../img/homeHeroBG.jpg) no-repeat center center; 
+ background: url(../img/homeHeroBG.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 #bitchinSection {
- background: url(../img/bitchinSectionBG.jpg) no-repeat center center; 
+ background: url(../img/bitchinSectionBG.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -89,8 +96,7 @@ html, body, .wrapper {
 			outline: 1px solid rgba(255,255,255,.4);
 			background-color: rgba(255,255,255,.1);
 			padding: 5px 0px;
-			width: 100%;
-			max-width: 150px;
+			width: 150px;
 			margin-top: 25px;
 		}
 	}
@@ -124,8 +130,24 @@ html, body, .wrapper {
 		background-color: white;
 	}
 	#whine {
+		width: auto;
 		h2 {
 			text-align: center;
+		}
+		h2:before {
+    	content: open-quote;
+			margin-right: 5px;
+		}
+		h2:after {
+			content: close-quote;
+			margin-left: 5px;
+		}
+		h3 {
+			color: rgba(255,255,255,.4);
+			margin-bottom: 20px;
+		}
+		h3:before {
+			content: "by: ";
 		}
 	}
 }

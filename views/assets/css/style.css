@@ -24,13 +24,13 @@ a:hover {
 /* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
 /* line 13, ../sass/style.scss */
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
   /* WebKit/Blink Browsers */
 }
 
 /* line 16, ../sass/style.scss */
 ::-moz-selection {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
   /* Gecko Browsers */
 }
 
@@ -73,17 +73,18 @@ html, body, .wrapper {
 }
 
 /* line 40, ../sass/style.scss */
-#homeHero {
-  background: url(../img/homeHeroBG.jpg) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+#logo {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  width: 150px;
+  height: auto;
+  z-index: 10;
 }
 
 /* line 47, ../sass/style.scss */
-#bitchinSection {
-  background: url(../img/bitchinSectionBG.jpg) no-repeat center center;
+#homeHero {
+  background: url(../img/homeHeroBG.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -91,6 +92,15 @@ html, body, .wrapper {
 }
 
 /* line 54, ../sass/style.scss */
+#bitchinSection {
+  background: url(../img/bitchinSectionBG.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 61, ../sass/style.scss */
 .section:after {
   content: '';
   position: absolute;
@@ -101,7 +111,7 @@ html, body, .wrapper {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 61, ../sass/style.scss */
+/* line 68, ../sass/style.scss */
 .section {
   height: 100%;
   width: 100%;
@@ -109,7 +119,7 @@ html, body, .wrapper {
   position: relative;
   overflow: hidden;
 }
-/* line 67, ../sass/style.scss */
+/* line 74, ../sass/style.scss */
 .section .wrap {
   position: absolute;
   top: 50%;
@@ -122,18 +132,18 @@ html, body, .wrapper {
   width: 90%;
   z-index: 5;
 }
-/* line 74, ../sass/style.scss */
+/* line 81, ../sass/style.scss */
 .section .wrap h1, .section .wrap h2 {
   font-size: 1.8em;
   color: white;
   margin: 10px 0px;
 }
-/* line 78, ../sass/style.scss */
+/* line 85, ../sass/style.scss */
 .section .wrap h1 a, .section .wrap h2 a {
   text-decoration: none;
   color: white;
 }
-/* line 83, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
 .section .wrap button, .section .wrap input[type=submit] {
   position: absolute;
   left: 50%;
@@ -146,15 +156,14 @@ html, body, .wrapper {
   outline: 1px solid rgba(255, 255, 255, 0.4);
   background-color: rgba(255, 255, 255, 0.1);
   padding: 5px 0px;
-  width: 100%;
-  max-width: 150px;
+  width: 150px;
   margin-top: 25px;
 }
-/* line 97, ../sass/style.scss */
+/* line 103, ../sass/style.scss */
 .section form {
   text-align: center;
 }
-/* line 99, ../sass/style.scss */
+/* line 105, ../sass/style.scss */
 .section form input, .section form textarea {
   width: 100%;
   margin-top: 25px;
@@ -163,20 +172,20 @@ html, body, .wrapper {
   outline: none;
   color: white;
 }
-/* line 107, ../sass/style.scss */
+/* line 113, ../sass/style.scss */
 .section form input[name=name] {
   border-bottom: 1px solid white;
   max-width: 50%;
   padding-bottom: 5px;
   float: left;
 }
-/* line 113, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 .section form textarea {
   height: 200px;
   border: 1px solid white;
   padding: 10px;
 }
-/* line 119, ../sass/style.scss */
+/* line 125, ../sass/style.scss */
 .section footer {
   position: absolute;
   bottom: -100px;
@@ -185,9 +194,32 @@ html, body, .wrapper {
   height: 100px;
   background-color: white;
 }
-/* line 127, ../sass/style.scss */
+/* line 132, ../sass/style.scss */
+.section #whine {
+  width: auto;
+}
+/* line 134, ../sass/style.scss */
 .section #whine h2 {
   text-align: center;
+}
+/* line 137, ../sass/style.scss */
+.section #whine h2:before {
+  content: open-quote;
+  margin-right: 5px;
+}
+/* line 141, ../sass/style.scss */
+.section #whine h2:after {
+  content: close-quote;
+  margin-left: 5px;
+}
+/* line 145, ../sass/style.scss */
+.section #whine h3 {
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+/* line 149, ../sass/style.scss */
+.section #whine h3:before {
+  content: "by: ";
 }
 
 /* Media queries
