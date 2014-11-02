@@ -10,9 +10,12 @@ a {color: #03f;}
 a:hover {color: #69f;}
 
 /* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
-::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
-::selection {background: #fcd700; color: #fff; text-shadow: none;} 
-
+::selection {
+  background: rgba(0,0,0,.1); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(0,0,0,.1); /* Gecko Browsers */
+}
 /*	j.mp/webkit-tap-highlight-color */
 a:link {-webkit-tap-highlight-color: #fcd700;} 
 
@@ -35,14 +38,14 @@ html, body, .wrapper {
 	width: 100%;
 }
 #homeHero {
- background: url(../img/homeHeroBG.jpg) no-repeat center center fixed; 
+ background: url(../img/homeHeroBG.jpg) no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 #bitchinSection {
- background: url(../img/bitchinSectionBG.jpg) no-repeat center center fixed; 
+ background: url(../img/bitchinSectionBG.jpg) no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

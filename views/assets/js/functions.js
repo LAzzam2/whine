@@ -10,16 +10,22 @@
 
 // remap jQuery to $
 (function($){
-
-	/* trigger when page is ready */
+	var site = {
+		init: function(){
+			site.pullWhine();
+		},
+		pullWhine: function(){
+			$.getJSON( "api/whines/", function( data ) {
+				whine = data[Math.floor(Math.random() * data.length-1)+1].contents;
+			  	console.log(whine);
+			  	$('#whine>h2').html(whine);
+			});
+		},
+	}
+	
 	$(document).ready(function (){
-	
-		// your functions go here
-	
+		site.init();
 	});
-	
-	
-	/* optional triggers
 	
 	$(window).load(function() {
 		
@@ -28,7 +34,5 @@
 	$(window).resize(function() {
 		
 	});
-	
-	*/
 
 })(window.jQuery);
