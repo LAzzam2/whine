@@ -66,13 +66,13 @@ textarea:-moz-placeholder {
   color: #a9a9a9;
 }
 
-/* line 36, ../sass/style.scss */
+/* line 42, ../sass/style.scss */
 html, body, .wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 40, ../sass/style.scss */
+/* line 46, ../sass/style.scss */
 #logo {
   position: fixed;
   top: 25px;
@@ -82,7 +82,7 @@ html, body, .wrapper {
   z-index: 10;
 }
 
-/* line 47, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 #homeHero {
   background: url(../img/homeHeroBG.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -91,7 +91,7 @@ html, body, .wrapper {
   background-size: cover;
 }
 
-/* line 54, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 #bitchinSection {
   background: url(../img/bitchinSectionBG.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -100,8 +100,58 @@ html, body, .wrapper {
   background-size: cover;
 }
 
-/* line 61, ../sass/style.scss */
-.section:after {
+/* line 67, ../sass/style.scss */
+#bitchinSection:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  opacity: 1;
+  background: -moz-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.01) 99%, transparent 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, black), color-stop(99%, rgba(0, 0, 0, 0.01)), color-stop(100%, transparent));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.01) 99%, transparent 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.01) 99%, transparent 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.01) 99%, transparent 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.01) 99%, transparent 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 81, ../sass/style.scss */
+#homeHero:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  opacity: 1;
+  background: -moz-linear-gradient(top, transparent 0%, black 99%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(99%, black));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, transparent 0%, black 99%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, transparent 0%, black 99%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, transparent 0%, black 99%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, transparent 0%, black 99%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 95, ../sass/style.scss */
+.section:before {
   content: '';
   position: absolute;
   top: 0;
@@ -111,7 +161,7 @@ html, body, .wrapper {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 68, ../sass/style.scss */
+/* line 102, ../sass/style.scss */
 .section {
   height: 100%;
   width: 100%;
@@ -119,7 +169,7 @@ html, body, .wrapper {
   position: relative;
   overflow: hidden;
 }
-/* line 74, ../sass/style.scss */
+/* line 108, ../sass/style.scss */
 .section .wrap {
   position: absolute;
   top: 50%;
@@ -132,18 +182,18 @@ html, body, .wrapper {
   width: 90%;
   z-index: 5;
 }
-/* line 81, ../sass/style.scss */
+/* line 115, ../sass/style.scss */
 .section .wrap h1, .section .wrap h2 {
   font-size: 1.8em;
   color: white;
   margin: 10px 0px;
 }
-/* line 85, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 .section .wrap h1 a, .section .wrap h2 a {
   text-decoration: none;
   color: white;
 }
-/* line 90, ../sass/style.scss */
+/* line 124, ../sass/style.scss */
 .section .wrap button, .section .wrap input[type=submit] {
   position: absolute;
   left: 50%;
@@ -151,6 +201,10 @@ html, body, .wrapper {
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
+  transition: all 250ms;
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  -ms-transition: all 250ms;
   background: none;
   border: none;
   outline: 1px solid rgba(255, 255, 255, 0.4);
@@ -158,12 +212,19 @@ html, body, .wrapper {
   padding: 5px 0px;
   width: 150px;
   margin-top: 25px;
+  color: white;
 }
-/* line 103, ../sass/style.scss */
+/* line 138, ../sass/style.scss */
+.section .wrap button:hover, .section .wrap input[type=submit]:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/* line 143, ../sass/style.scss */
 .section form {
+  overflow: hidden;
   text-align: center;
 }
-/* line 105, ../sass/style.scss */
+/* line 146, ../sass/style.scss */
 .section form input, .section form textarea {
   width: 100%;
   margin-top: 25px;
@@ -172,20 +233,21 @@ html, body, .wrapper {
   outline: none;
   color: white;
 }
-/* line 113, ../sass/style.scss */
+/* line 154, ../sass/style.scss */
 .section form input[name=name] {
   border-bottom: 1px solid white;
   max-width: 50%;
   padding-bottom: 5px;
   float: left;
 }
-/* line 119, ../sass/style.scss */
+/* line 160, ../sass/style.scss */
 .section form textarea {
   height: 200px;
   border: 1px solid white;
   padding: 10px;
+  border-radius: 5px;
 }
-/* line 125, ../sass/style.scss */
+/* line 167, ../sass/style.scss */
 .section footer {
   position: absolute;
   bottom: -100px;
@@ -194,30 +256,30 @@ html, body, .wrapper {
   height: 100px;
   background-color: white;
 }
-/* line 132, ../sass/style.scss */
+/* line 174, ../sass/style.scss */
 .section #whine {
   width: auto;
 }
-/* line 134, ../sass/style.scss */
+/* line 176, ../sass/style.scss */
 .section #whine h2 {
   text-align: center;
 }
-/* line 137, ../sass/style.scss */
+/* line 179, ../sass/style.scss */
 .section #whine h2:before {
   content: open-quote;
   margin-right: 5px;
 }
-/* line 141, ../sass/style.scss */
+/* line 183, ../sass/style.scss */
 .section #whine h2:after {
   content: close-quote;
   margin-left: 5px;
 }
-/* line 145, ../sass/style.scss */
+/* line 187, ../sass/style.scss */
 .section #whine h3 {
   color: rgba(255, 255, 255, 0.4);
   margin-bottom: 20px;
 }
-/* line 149, ../sass/style.scss */
+/* line 191, ../sass/style.scss */
 .section #whine h3:before {
   content: "by: ";
 }
