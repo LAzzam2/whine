@@ -1,7 +1,7 @@
 {
     "name": "whine",
     "description": "Quit bitchin™",
-    "version": 0.1,
+    "version": "0.0.1",
     "main": "app/main.js",
     "repository" : {
         "type" : "git",
