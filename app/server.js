@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
  * Add routes
  */
 var app = express();
-app.use('/', express.static(__dirname + '/views'));
+app.use('/', express.static(__dirname + '../../views'));
 app.use('/whines', whinesRouter);
 
 /*
