@@ -13,8 +13,4 @@ WhineSchema.plugin(random);
 
 Whine = mongoose.model('Whine', WhineSchema);
 
-Whine.syncRandom(function (err, result) {
-  console.log(result.updated);
-});
-
 module.exports = Whine
