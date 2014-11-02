@@ -12,8 +12,8 @@ whinesRouter.route('/')
             res.json({message: "Something went horribly wrong."})
         } else {
             _.each(whines, function(whine) {
-                delete whines['ip'];
-                delete whines['geo'];
+                delete whine['ip'];
+                delete whine['geo'];
             })
             res.json(whines)
         }
@@ -32,5 +32,24 @@ whinesRouter.route('/')
         }
     })
 });
+
+whinesRouter.route('/random')
+.get(function(req, res) {
+    whineService.random(function(err, whines) {
+        if (err) {
+            res.status(500);
+            res.json({message: "Something went horribly wrong."})
+        } else {
+            whine = _.first(whines)
+            if (!whine) {
+                res.status(500).json({message: "No whines yet to get"})
+            } else {
+                delete whine['ip'];
+                delete whine['geo'];
+                res.json(whine)
+            }
+        }
+    })
+})
 
 module.exports = whinesRouter

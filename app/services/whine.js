@@ -16,3 +16,9 @@ exports.create = function (obj, callback) {
     var whine = Whine(obj);
     whine.save(callback);
 }
+
+exports.random = function (callback) {
+    Whine.findRandom()
+    .limit(1)
+    .exec(callback);
+}
