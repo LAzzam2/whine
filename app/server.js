@@ -46,13 +46,13 @@ var app = express();
 app.use(bodyParser.json())
 app.use('/', express.static(__dirname + '../../views'));
 app.use('/api/whines', whinesRouter);
-app.use('/api/whines', whinesRouter);
 
 /*
  * Add rate limiting if production is enabled
  */
 if (process.env.LIMIT === 'true') {
     var limiter = require('express-limiter')(app, redisClient)
+    // limit for creating is two per hour
     limiter({
       path: '/api/whines',
       method: 'post',
@@ -60,6 +60,24 @@ if (process.env.LIMIT === 'true') {
       // 2 requests per hour
       total: 2,
       expire: 1000 * 60 * 60
+    })
+    // limit browsing whines  to 40 per minute
+    limiter({
+      path: '/api/whines',
+      method: 'get',
+      lookup: ['connection.remoteAddress'],
+      // 2 requests per hour
+      total: 40,
+      expire: 1000 * 60
+    })
+    // limit random whines to 40 per minute
+    limiter({
+      path: '/api/whines/random',
+      method: 'get',
+      lookup: ['connection.remoteAddress'],
+      // 2 requests per hour
+      total: 40,
+      expire: 1000 * 60
     })
 }
 

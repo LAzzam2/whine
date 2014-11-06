@@ -1,21 +1,25 @@
 {
-    "name": "whine",
-    "description": "Quit bitchin™",
-    "version": "0.0.1",
-    "main": "app/main.js",
-    "repository" : {
-        "type" : "git",
-        "url" : "https://github.com/LAzzam2/whine.git"
-    },
-    "dependencies": {
-        "express": "4.x",
-        "mongoose": "3.x",
-        "bower": "1.x",
-        "underscore": "1.x",
-        "async": "0.x",
-        "body-parser": "1.x",
-        "mongoose-random": "0.x",
-        "redis": "0.x",
-        "express-limiter": "1.x"
-    }
+  "name": "whine",
+  "description": "Quit bitchin™",
+  "version": "0.0.1",
+  "main": "app/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LAzzam2/whine.git"
+  },
+  "dependencies": {
+    "express": "4.x",
+    "mongoose": "3.x",
+    "bower": "1.x",
+    "underscore": "1.x",
+    "async": "0.x",
+    "body-parser": "1.x",
+    "mongoose-random": "0.x",
+    "redis": "0.x",
+    "express-limiter": "1.x",
+    "mongoose-validator": "^1.0.2",
+    "sanitizer": "^0.1.2",
+    "jsonschema": "^1.0.0",
+    "htmlstrip-native": "0.0.4"
+  }
 }
