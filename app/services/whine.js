@@ -1,8 +1,8 @@
-var Whine = require('../models/whine')
+var Whine = require('../models/whine');
 
 exports.read = function (id, callback) {
      Whine.findById(id, callback);
-}
+};
 
 exports.browse = function (filters, page, pageSize, callback) {
     Whine.find(filters)
@@ -10,18 +10,18 @@ exports.browse = function (filters, page, pageSize, callback) {
     .skip(page * pageSize)
     .limit(pageSize)
     .exec(callback);
-}
+};
 
 exports.create = function (obj, callback) {
     var whine = Whine(obj);
     whine.save(callback);
-}
+};
 
 exports.random = function (callback) {
     Whine.findRandom()
     .limit(1)
     .exec(callback);
-}
+};
 
 exports.near = function (lat, lng, radius, page, pageSize, callback) {
     Whine.find().near('loc', {
@@ -32,4 +32,4 @@ exports.near = function (lat, lng, radius, page, pageSize, callback) {
     .skip(page * pageSize)
     .limit(pageSize)
     .exec(callback);
-}
+};
