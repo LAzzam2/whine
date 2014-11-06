@@ -41,12 +41,12 @@
 			$('#whine').fadeOut('slow', function(){
 				$.getJSON( "api/whines/random", function( data ) {
 					whine = data.text;
-					by = data.author;
+					author = data.author;
 				  	$('#whine>h2').html(whine);
-				  	if(by){
+				  	if(author){
 				  		$('#whine>h3').remove();
 				  		$('#whine').prepend('<h3></h3>')
-				  		$('#whine>h3').html(by);
+				  		$('#whine>h3').html(author);
 				  	}
 				  	$('#whine').fadeIn();
 				});
@@ -69,8 +69,8 @@
 			    url: 'api/whines',
 			    type: 'post',
 			    data: JSON.stringify({
-			        contents: ''+$('textarea').val()+'',
-			        by: ''+$('.name').val()+''
+			        text: ''+$('textarea').val()+'',
+			        author: ''+$('.name').val()+''
 			    }),
 			    headers: {
 			        "Content-Type": 'application/json',
