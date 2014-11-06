@@ -240,18 +240,19 @@ html, body, .wrapper {
   margin-top: 25px;
   color: white;
   border-radius: 2px;
+  outline: none;
 }
-/* line 157, ../sass/style.scss */
+/* line 158, ../sass/style.scss */
 .section .wrap button:hover, .section .wrap input[type=submit]:hover {
   color: black;
   background-color: rgba(255, 255, 255, 0.8);
 }
-/* line 162, ../sass/style.scss */
+/* line 163, ../sass/style.scss */
 .section form {
   overflow: hidden;
   text-align: center;
 }
-/* line 165, ../sass/style.scss */
+/* line 166, ../sass/style.scss */
 .section form input, .section form textarea {
   width: 100%;
   margin-top: 25px;
@@ -260,21 +261,21 @@ html, body, .wrapper {
   outline: none;
   color: white;
 }
-/* line 173, ../sass/style.scss */
+/* line 174, ../sass/style.scss */
 .section form input[name=name] {
   border-bottom: 1px solid white;
   max-width: 50%;
   padding-bottom: 5px;
   float: left;
 }
-/* line 179, ../sass/style.scss */
+/* line 180, ../sass/style.scss */
 .section form textarea {
   height: 200px;
   border: 1px solid white;
   padding: 10px;
   border-radius: 5px;
 }
-/* line 186, ../sass/style.scss */
+/* line 187, ../sass/style.scss */
 .section footer {
   position: absolute;
   bottom: -100px;
@@ -283,30 +284,30 @@ html, body, .wrapper {
   height: 100px;
   background-color: white;
 }
-/* line 193, ../sass/style.scss */
+/* line 194, ../sass/style.scss */
 .section #whine {
   width: auto;
 }
-/* line 195, ../sass/style.scss */
+/* line 196, ../sass/style.scss */
 .section #whine h2 {
   text-align: center;
 }
-/* line 198, ../sass/style.scss */
+/* line 199, ../sass/style.scss */
 .section #whine h2:before {
   content: open-quote;
   margin-right: 5px;
 }
-/* line 202, ../sass/style.scss */
+/* line 203, ../sass/style.scss */
 .section #whine h2:after {
   content: close-quote;
   margin-left: 5px;
 }
-/* line 206, ../sass/style.scss */
+/* line 207, ../sass/style.scss */
 .section #whine h3 {
   color: rgba(255, 255, 255, 0.4);
   margin-bottom: 20px;
 }
-/* line 210, ../sass/style.scss */
+/* line 211, ../sass/style.scss */
 .section #whine h3:before {
   content: "by: ";
 }

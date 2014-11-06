@@ -18,6 +18,7 @@
 				forceHeight: false
 			});
 			$('form').css('height',$('form').height());
+			$('#whine').animate({'opacity':'1'});
 			// site.scrollHandler();
 		},
 		scrollHandler: function(){
@@ -94,8 +95,8 @@
 				  		$('#whine>h3').remove();
 				  		$('#whine').prepend('<h3></h3>')
 				  		$('#whine>h3').html(by);
-				  		$('#whine').fadeIn();
 				  	}
+				  	$('#whine').fadeIn();
 				});
 			})
 		},
