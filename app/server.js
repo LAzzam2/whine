@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var redis = require('redis');
+var winston = require('winston');
 
 var whinesRouter = require('./views/whines');
 
@@ -11,6 +12,7 @@ var whinesRouter = require('./views/whines');
  */
 // If we're running in a production environment
 if (process.env.NODE_ENV === 'production') {
+    winston.info("Setting up production database connection.");
     // Get user and pass from environment variables
     var mongoUser = process.env.MONGO_DB_USER;
     var mongoPassword = process.env.MONGO_DB_PASSWORD;
@@ -20,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 // Otherwise just use a test database
 } else {
+    winston.info("Setting up development database connection.");
     mongoose.connect('mongodb://localhost/whine_test');
 }
 
@@ -28,6 +31,7 @@ if (process.env.NODE_ENV === 'production') {
  */
 var redisClient = null;
 if (process.env.NODE_ENV === 'production') {
+    winston.info("Setting up production Redis connection.");
     // Get user and pass from environment variables
     var redisUser = process.env.REDIS_USER;
     var redisPassword = process.env.REDIS_PASSWORD;
@@ -36,6 +40,7 @@ if (process.env.NODE_ENV === 'production') {
     redisClient = redis.createClient(redisPort, redisHost);
     redisClient.auth(redisPassword);
 } else {
+    winston.info("Setting up development Redis connection.");
     redisClient = redis.createClient();
 }
 
@@ -51,7 +56,9 @@ app.use('/api/whines', whinesRouter);
  * Add rate limiting if production is enabled
  */
 if (process.env.LIMIT === 'true') {
+    winston.info("Setting up the rate limiter.");
     var limiter = require('express-limiter')(app, redisClient);
+    winston.info("Adding limiters for routes.");
     // limit for creating is two per hour
     limiter({
       path: '/api/whines',
@@ -86,3 +93,4 @@ if (process.env.LIMIT === 'true') {
  */
 var port = process.env.PORT || 5555;
 app.listen(port);
+winston.info("Listening on port" + port);

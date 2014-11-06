@@ -20,7 +20,8 @@
     "mongoose-validator": "^1.0.2",
     "sanitizer": "^0.1.2",
     "jsonschema": "^1.0.0",
-    "htmlstrip-native": "^0.0.4"
+    "htmlstrip-native": "^0.0.4",
+    "winston": "^0.8.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

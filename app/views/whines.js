@@ -2,6 +2,7 @@ var express = require('express');
 var _ = require('underscore');
 var validate = require('jsonschema').validate;
 var htmlStrip = require('htmlstrip-native').html_strip;
+var winston = require('winston');
 var whineService = require('../services/whine');
 var whineResponder = require('./responders/whines');
 var whineSchema = require('./schemas/whine.js');
@@ -24,7 +25,7 @@ whinesRouter.route('/')
         });
     })
     // create a new whine
-    .post(function(req, res, next) {
+    .post(function(req, res) {
         // get the data from the request
         data = req.body;
         // Validate the input with a schema
@@ -32,7 +33,6 @@ whinesRouter.route('/')
         // output the errors and exit
         if (!validationResult.valid) {
             res.status(400).json(validationResult.errors);
-            next();
         }
         // get the message text
         text = data.text;
@@ -53,11 +53,9 @@ whinesRouter.route('/')
             if (err) {
                 // if it failed return 500
                 res.status(500).json({});
-                next();
             } else {
                 // if it succeeded return 204
                 res.status(204).json({});
-                next();
             }
         });
     });
@@ -65,19 +63,16 @@ whinesRouter.route('/')
 whinesRouter.route('/random')
     // get random whine
     .get(function(req, res) {
-        whineService.random(function(err, whines, next) {
+        whineService.random(function(err, whines) {
             if (err) {
                 res.status(500).json({message: "Something went horribly wrong."});
-                next();
             } else {
                 whine = _.first(whines);
                 if (!whine) {
                     res.status(500).json({message: "No whines yet to get"});
-                    next();
                 } else {
                     result = whineResponder.build(whine);
                     res.json(result);
-                    next();
                 }
             }
         });
@@ -85,20 +80,18 @@ whinesRouter.route('/random')
 
 whinesRouter.route('/near')
     // get whines nearby
-    .get(function(req, res, next) {
+    .get(function(req, res) {
         //get a random whine
         whineService.near(function(err, whines) {
             // if theres an error respond with a 500
             if (err) {
                 res.status(500).json({message: "Something went horribly wrong."});
-                next();
             // get the results
             } else {
                 results = _.map(whines, function(whine) {
                     return whineResponder.build(whine);
                 });
                 res.json(results);
-                next();
             }
         });
     });
