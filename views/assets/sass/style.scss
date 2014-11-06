@@ -67,7 +67,10 @@ html, body, .wrapper {
 	z-index: 50;
 	border-left: 1px solid white;
 	padding-left: 15px;
+	opacity: 0;
+	@include transition(opacity, 250ms);
 	img {
+		margin-top: 4px;
 		height: 34px;
 		width: 34px;
 	}
@@ -285,6 +288,10 @@ html, body, .wrapper {
 				margin-bottom: 0px;
 			}
 		}
+	}
+	.hide {
+		opacity: 0 !important;
+		pointer-events: none !important;
 	}
 }
 
