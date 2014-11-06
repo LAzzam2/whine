@@ -15,4 +15,4 @@ WhineSchema.plugin(random);
 
 Whine = mongoose.model('Whine', WhineSchema);
 
-module.exports = Whine
+module.exports = Whine;
