@@ -1,8 +1,7 @@
 {
-<<<<<<< HEAD
   "name": "whine",
   "description": "Quit bitchin™",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "app/main.js",
   "repository": {
     "type": "git",
@@ -22,5 +21,9 @@
     "sanitizer": "^0.1.2",
     "jsonschema": "^1.0.0",
     "htmlstrip-native": "^0.0.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0"
   }
 }
