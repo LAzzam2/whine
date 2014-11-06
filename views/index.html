@@ -51,6 +51,8 @@
     <!-- This is an un-minified, complete version of Modernizr. 
          Before you move to production, you should generate a custom build that only has the detects you need. -->
     <script src="assets/js/libs/modernizr-2.7.1.dev.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,700,400' rel='stylesheet' type='text/css'>
     
     <!-- Application-specific meta tags -->
     <!-- Windows 8: see http://msdn.microsoft.com/en-us/library/ie/dn255024%28v=vs.85%29.aspx for details -->
@@ -79,25 +81,43 @@
 
 <div class="wrapper">
   <div id="logo">
-    <a href="/"><img src="assets/img/whine.svg" alt="whine" /></a>
+    <a href="/"><img src="assets/img/logosmall.svg" alt="whine" /></a>
   </div>
-        
+  <div id="toggle">
+    <ul>
+      <li><img src="assets/img/browse.svg" alt="browse" /></li>
+      <li><img src="assets/img/list.svg" alt="list" /></li>
+    </ul>
+  </div>
+   
   <div id="homeHero" class="section">
-    <div class="wrap" data-center="opacity: 1; top: 50%;" data-top="opacity: 0; top: 40%;">
-      <h1>Everyone Bitches on social media. That's not okay. Bitch here instead.</h1>
+    <div class="wrap" data-bottom="top: 60%" data-center="top: 50%;" data-top="top: 30%;">
+      <img src="assets/img/logo.svg" alt="Whine Logo" />
+    </div>
+    <div id="d1" class="drop"><p data-bottom="opacity: .5;" data--150-bottom="opacity: 0;">what what what what</p><img data-bottom="opacity: .5;" data--100-bottom="opacity: 0;" src="assets/img/arrow.svg" alt="see"/></div>
+  </div>
+
+  <div id="postWhine" class="section">
+    <div class="wrap" >
+      <h1>Ease your mind.</h1>
       <form autocomplete="off">
           <input class="name" name="name" placeholder="Name" />
           <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
           <input type="submit">
       </form>
     </div>
-    <div id="drop" data--200-bottom="opacity: 0; bottom: 50px;" data-bottom="opacity: .2; bottom: 25px;"><img src="assets/img/see.svg" alt="see"/></div>
+
+    <div id="d2" class="drop"><p data-bottom="opacity: .5;" data--150-bottom="opacity: 0;">what what what what</p><img data-bottom="opacity: .5;" data--100-bottom="opacity: 0;" src="assets/img/arrow.svg" alt="see"/></div>
   </div>
 
-  <div id="bitchinSection" class="section">
-    <div id="whine" class="wrap" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
+  <div id="browseWhines" class="section">
+    <!-- <div id="whine" class="wrap" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
       <h2></h2>
       <button>Next Whine</button>
+    </div> -->
+     <div id="whines" class="wrap" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
+      <ul></ul>
+      <button>Next Whines</button>
     </div>
     <footer>
       <p><small>&copy; Created by some boss ass peeps.</small></p>
