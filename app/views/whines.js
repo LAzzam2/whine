@@ -33,11 +33,12 @@ whinesRouter.route('/')
         // output the errors and exit
         if (!validationResult.valid) {
             res.status(400).json(validationResult.errors);
+            return;
         }
         // get the message text
-        text = data.text;
+        text = data.text.trim();
         // get the author string
-        author = data.author;
+        author = data.author.trim();
         // sanitize inputs
         htmlStripOptions = {
             include_script: false,

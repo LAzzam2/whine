@@ -2,9 +2,9 @@ var _ = require('underscore');
 
 allowedProperties = [
     '_id',
-    'contents',
+    'text',
     'submitted',
-    'by',
+    'author',
 ];
 
 exports.build = function(whine) {

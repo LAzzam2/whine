@@ -11,8 +11,8 @@ module.exports = {
       "minLength": 4,
       "maxLength": 500
     },
-    "by": {
-      "id": "#by",
+    "author": {
+      "id": "#author",
       "type": "string",
       "additionalProperties": false
     },
@@ -33,7 +33,6 @@ module.exports = {
   },
   "required": [
     "text",
-    "by",
-    "loc"
+    "author",
   ]
 };
