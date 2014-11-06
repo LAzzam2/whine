@@ -33,6 +33,7 @@ whinesRouter.route('/')
         // output the errors and exit
         if (!validationResult.valid) {
             res.status(400).json(validationResult.errors);
+            return;
         }
         // get the message text
         text = data.text;
