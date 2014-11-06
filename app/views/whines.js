@@ -36,9 +36,9 @@ whinesRouter.route('/')
             return;
         }
         // get the message text
-        text = data.text;
+        text = data.text.trim();
         // get the author string
-        author = data.author;
+        author = data.author.trim();
         // sanitize inputs
         htmlStripOptions = {
             include_script: false,
