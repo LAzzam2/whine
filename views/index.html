@@ -85,43 +85,44 @@
   </div>
   <div id="toggle">
     <ul>
-      <li><img src="assets/img/browse.svg" alt="browse" /></li>
+      <li class="active"><img src="assets/img/browse.svg" alt="browse" /></li>
       <li><img src="assets/img/list.svg" alt="list" /></li>
     </ul>
   </div>
    
-  <div id="homeHero" class="section">
-    <div class="wrap" data-bottom="top: 60%" data-center="top: 50%;" data-top="top: 30%;">
-      <img src="assets/img/logo.svg" alt="Whine Logo" />
-    </div>
-    <div id="d1" class="drop"><p data-bottom="opacity: .5;" data--150-bottom="opacity: 0;">what what what what</p><img data-bottom="opacity: .5;" data--100-bottom="opacity: 0;" src="assets/img/arrow.svg" alt="see"/></div>
-  </div>
-
-  <div id="postWhine" class="section">
-    <div class="wrap" >
-      <h1>Ease your mind.</h1>
-      <form autocomplete="off">
-          <input class="name" name="name" placeholder="Name" />
-          <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
-          <input type="submit">
-      </form>
+  <div class="sections"> 
+    <div id="homeHero" class="section">
+      <div class="wrap">
+        <img src="assets/img/logo.svg" alt="Whine Logo" />
+      </div>
+      <div id="d1" class="drop"><p>Let it out</p><img src="assets/img/arrow.svg" alt="see"/></div>
     </div>
 
-    <div id="d2" class="drop"><p data-bottom="opacity: .5;" data--150-bottom="opacity: 0;">what what what what</p><img data-bottom="opacity: .5;" data--100-bottom="opacity: 0;" src="assets/img/arrow.svg" alt="see"/></div>
-  </div>
+    <div id="postWhine" class="section">
+      <div class="wrap">
+        <h1>Ease your mind.</h1>
+        <form autocomplete="off">
+            <input class="name" name="name" placeholder="Name" />
+            <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
+            <input type="submit" value="submit">
+        </form>
+      </div>
+      <div id="d2" class="drop"><p>Browse complaints</p><img src="assets/img/arrow.svg" alt="see"/></div>
+    </div>
 
-  <div id="browseWhines" class="section">
-    <div id="whine" class="wrap" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
-      <h2></h2>
-      <button>Next Whine</button>
+    <div id="browseWhines" class="section">
+      <div id="whine" class="wrap">
+        <h2></h2>
+        <button>Next Whine</button>
+      </div>
+       <div id="whines" class="wrap hide">
+        <ul></ul>
+        <button>Next Whines</button>
+      </div>
+      <footer>
+        <p><small>&copy; Created by some boss ass peeps.</small></p>
+      </footer>
     </div>
-     <div id="whines" class="wrap hide" data-center="opacity: 1; top: 50%;" data-bottom="opacity: 0; top: 60%;">
-      <ul></ul>
-      <button>Next Whines</button>
-    </div>
-    <footer>
-      <p><small>&copy; Created by some boss ass peeps.</small></p>
-    </footer>
   </div>
 
 </div>

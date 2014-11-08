@@ -47,7 +47,7 @@ html, html a {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
-html, body, .wrapper {
+html, body, .wrapper, .sections {
 	height: 100%;
 	width: 100%;
 	font-family: 'Roboto', sans-serif;
@@ -68,7 +68,7 @@ html, body, .wrapper {
 	border-left: 1px solid white;
 	padding-left: 15px;
 	opacity: 0;
-	@include transition(opacity, 250ms);
+	@include transition(opacity, 350ms);
 	img {
 		margin-top: 4px;
 		height: 34px;
@@ -78,6 +78,14 @@ html, body, .wrapper {
 		float: left;
 		margin-right: 5px;
 		opacity: .4;
+		@include transition(opacity, 250ms);
+		cursor: hand; cursor: pointer;
+	}
+	.active{
+		opacity: 1;
+	}
+	li:hover:not(.active) {
+		opacity: .6;
 	}
 }
 #homeHero {
@@ -111,7 +119,7 @@ html, body, .wrapper {
 	content: '';
 	position: absolute;
 	top: 0; left: 0;
-	width: 100%; height: 40%;
+	width: 100%; height: 100%;
 	opacity: 1;
 	background: -moz-linear-gradient(top, rgba(0,0,0,.8) 0%, rgba(0,0,0,0.01) 99%, rgba(0,0,0,0) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,.7)), color-stop(99%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -165,7 +173,6 @@ html, body, .wrapper {
 		cursor: hand;
 		img {
 			position: relative;
-			@include transition(opacity, 250ms);
 		}
 		p{
 			position: absolute;
@@ -175,22 +182,22 @@ html, body, .wrapper {
 			white-space: nowrap;
 			font-weight: bold;
 			text-transform: uppercase;
-			@include transition(opacity, 250ms);
 		}
 	}
 	.drop:hover{
 		p, img {
+			@include transition(opacity, 250ms);
 			opacity: 1 !important;
 		}
 	}
 	.wrap {
 		position: absolute;
-		top: 45%; left: 50%;
+		top: 50%; left: 50%;
 		@include center(-50%,-50%);
 		max-width: 550px;
 		width: 90%;
 		z-index: 5;
-		h1, h2 {
+		h1, h2, li {
 			font-size: 2.3em;
 			color: white;
 			margin: 10px 0px;
@@ -215,7 +222,6 @@ html, body, .wrapper {
 			color: white;
 			border-radius: 2px;
 			box-sizing: border-box;
-			-webkit-backface-visibility: hidden;
 		}
 		button:hover, input[type=submit]:hover {
 			color: black;
@@ -223,7 +229,6 @@ html, body, .wrapper {
 		}
 	}
 	form {
-		overflow: hidden;
 		text-align: center;
 		input, textarea {
 			width: 100%;
@@ -260,7 +265,7 @@ html, body, .wrapper {
 	}
 	#whine, #whines {
 		width: auto;
-		h2 {
+		h2, ul li {
 			text-align: center;
 		}
 		h2:before {
@@ -280,12 +285,16 @@ html, body, .wrapper {
 		}
 		ul {
 			li {
-				color: white;
-				font-size: 1.2em;
-				margin-bottom: 10px;
-			}
-			li:last-child {
-				margin-bottom: 0px;
+				position: relative;
+				text-align: left;
+				margin-bottom: 35px;
+				font-size: 1.8em;
+				span {
+					color: rgba(255,255,255,.4);
+					display: block;
+					font-size: 13px;
+					margin-bottom: 5px;
+				}
 			}
 		}
 	}

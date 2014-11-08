@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
     // Get user and pass from environment variables
     var mongoUser = process.env.MONGO_DB_USER;
     var mongoPassword = process.env.MONGO_DB_PASSWORD;
-    mongoose.connect('mongodb://proximus.modulusmongo.net:27017/Es3ovyvi', {
+    mongoose.connect('mongodb://proximus.modulusmongo.net:27017/ymyq3yjY', {
         user: process.env.MONGO_DB_USER,
         pass: process.env.MONGO_DB_PASSWORD,
     });
