@@ -25,7 +25,10 @@ gulp.task('build', function(callback) {
 gulp.task('serve', ['build'], function() {
     //start the server at the beginning of the task
     nodemon({
-        script: 'app/main.js',
+        script: "app/main.js",
+        env: {
+            "DEBUG": "*"
+        },
         ignore: ['^(app)']
     })
     // watch for changes to the source
