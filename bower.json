@@ -1,10 +1,11 @@
 {
   "name": "Whine",
-    "version": "1.0.0",
-    "dependencies": {
-        "famous": "^0.3.0",
-        "angular": "^1.3.3",
-        "restangular": "^1.4.0",
-        "angular-facebook": "^0.2.3"
-    }
+  "version": "1.0.0",
+  "dependencies": {
+    "famous": "^0.3.0",
+    "angular": "^1.3.3",
+    "restangular": "^1.4.0",
+    "angular-facebook": "^0.2.3",
+    "zepto": "^1.1.4"
+  }
 }
