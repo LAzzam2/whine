@@ -12,14 +12,23 @@ var whinesRouter = express.Router();
 whinesRouter.route('/')
     // get a list of whines
     .get(function(req, res) {
-        whineService.browse({}, req.query.page || 0, req.query.perPage || 1, function(err, whines) {
+        // get query params
+        page = req.query.page || 1;
+        perPage = req.query.perPage || 10;
+        filters = {};
+        // query for the whines
+        whineService.browse(filters, page, perPage, function(err, whines) {
+            // if an error occurred send a 500 back
             if (err) {
                 res.status(500);
                 res.json({message: "Something went horribly wrong."});
+            // otherwise build a response of whines
             } else {
+                // format each whine response
                 results = _.map(whines, function(whine) {
                     return whineResponder.build(whine);
                 });
+                // return results
                 res.json(results);
             }
         });
