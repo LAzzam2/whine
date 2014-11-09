@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
  */
 var app = express();
 app.use(bodyParser.json());
-app.use('/', express.static(__dirname + '../../views'));
+app.use('/', express.static(__dirname + '/build'));
 app.use('/api/whines', whinesRouter);
 
 /*
