@@ -52,6 +52,26 @@
          Before you move to production, you should generate a custom build that only has the detects you need. -->
     <script src="assets/js/libs/modernizr-2.7.1.dev.js"></script>
 
+    <!-- shims for backwards compatibility -->
+    <script type="text/javascript" src="http://code.famo.us/lib/functionPrototypeBind.js"></script>
+    <script type="text/javascript" src="http://code.famo.us/lib/classList.js"></script>
+    <script type="text/javascript" src="http://code.famo.us/lib/requestAnimationFrame.js"></script>
+
+    <!-- module loader -->
+    <script type="text/javascript" src="http://code.famo.us/lib/require.js"></script>
+
+    <!-- famous -->
+    <link rel="stylesheet" type="text/css" href="http://code.famo.us/famous/0.3.0/famous.css" />
+    <script type="text/javascript" src="http://code.famo.us/famous/0.3.0/famous.min.js"></script>
+
+    <script type="text/javascript">
+        require.config({
+            baseUrl: './src/'
+        });
+        require(['main']);
+    </script>
+
+
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700,400' rel='stylesheet' type='text/css'>
     
     <!-- Application-specific meta tags -->
