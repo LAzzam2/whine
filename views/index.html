@@ -90,11 +90,11 @@
     <script src="assets/js/famous-angular.js"></script>
     <!-- Include the Angular app -->
     <script src="assets/js/app.js"></script>
-    <fa-app ng-controller="HomeCtrl" style="width: 320px; height: 568px;">
-        <fa-modifier>
-            <fa-surface>This will be shown on screen.</fa-surface>
-        </fa-modifier>
-        <div>This will not appear on screen because it is not inside an fa-surface.</div>
-    </fa-app>
+    <div data-ng-controller="HomeCtrl">
+        <button data-ng-click="boo()">Click!</button>
+        <div data-ng-repeat="whine in whines">
+            {{ whine.author }}
+        </div>
+    </div>
 </body>
 </html>

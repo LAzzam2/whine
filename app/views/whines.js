@@ -14,7 +14,7 @@ whinesRouter.route('/')
     .get(function(req, res) {
         // get query params
         page = req.query.page || 1;
-        perPage = req.query.perPage || 10;
+        perPage = Math.min(req.query.perPage || 10, 30);
         filters = {};
         // query for the whines
         whineService.browse(filters, page, perPage, function(err, whines) {
@@ -73,16 +73,20 @@ whinesRouter.route('/')
 whinesRouter.route('/random')
     // get random whine
     .get(function(req, res) {
-        whineService.random(function(err, whines) {
+        // the number of random whines we want.
+        limit = Math.min(req.query.limit || 10, 30);
+        // get the whines
+        whineService.random(limit, function(err, whines) {
             if (err) {
                 res.status(500).json({message: "Something went horribly wrong."});
             } else {
-                whine = _.first(whines);
-                if (!whine) {
+                if (!whines) {
                     res.status(500).json({message: "No whines yet to get"});
                 } else {
-                    result = whineResponder.build(whine);
-                    res.json(result);
+                    results = _.map(whines, function(whine) {
+                        return whineResponder.build(whine);
+                    });
+                    res.json(results);
                 }
             }
         });
@@ -91,8 +95,12 @@ whinesRouter.route('/random')
 whinesRouter.route('/near')
     // get whines nearby
     .get(function(req, res) {
-        //get a random whine
-        whineService.near(function(err, whines) {
+        // query parameters
+        lat = Number(req.query.lat)
+        lng = Number(req.query.lng)
+        limit = Math.min(req.query.limit || 10, 30);
+        // get the whines
+        whineService.near(lat, lng, limit, function(err, whines) {
             // if theres an error respond with a 500
             if (err) {
                 res.status(500).json({message: "Something went horribly wrong."});
