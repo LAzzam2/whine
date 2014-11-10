@@ -93,11 +93,11 @@ gulp.task('copydeps', function() {
             .pipe(gulp.dest('build/assets/css'));
     // copy famous-angular
     gulp.src(
-        './bower_components/famous/dist/famous-angular.js',
-        './bower_components/famous/dist/famous-angular.min.js')
+        './bower_components/famous-angular/dist/famous-angular.js',
+        './bower_components/famous-angular/dist/famous-angular.min.js')
             .pipe(gulp.dest('build/assets/js'));
     gulp.src(
-        './bower_components/famous/dist/famous-angular.css')
+        './bower_components/famous-angular/dist/famous-angular.css')
             .pipe(cssmin())
             .pipe(gulp.dest('build/assets/css'));
     // copy lodash
