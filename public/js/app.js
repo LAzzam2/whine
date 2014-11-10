@@ -3,7 +3,7 @@ angular.module('whine', ['famous.angular', 'restangular'])
 .config(['RestangularProvider', function(RestangularProvider) {
     RestangularProvider.setBaseUrl('/api/');
 }])
-.controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
+.controller('ScrollCtrl', ['$scope', '$famous', 'faObject', function($scope, $famous, faObject) {
         
     var EventHandler = $famous['famous/core/EventHandler'];
     $scope.eventHandler = new EventHandler();
@@ -12,6 +12,21 @@ angular.module('whine', ['famous.angular', 'restangular'])
       scrollViewTwo: {
       }
     };
+    faObject("scrollObject",function(scrollObject){
+	    scrollObject.sync.on("start", function (event) {
+  			test();
+		});
+	});
+    faObject("scrollObject",function(scrollObject){
+	    scrollObject.sync.on("update", function (event) {
+  			test();
+		});
+	});
+	faObject("scrollObject",function(scrollObject){
+	    scrollObject.sync.on("end", function (event) {
+  			test();
+		});
+	});
 }])
 
 .service('whineService', ['Restangular', function(Restangular) {

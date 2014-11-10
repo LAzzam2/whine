@@ -78,6 +78,8 @@
 </head>
 
 <body data-ng-app="whine">
+    
+    <script src="assets/js/function.js"></script>
     <!-- Include lodash -->
     <script src="assets/js/lodash.js"></script>
     <!-- Include Angular -->
@@ -90,16 +92,20 @@
     <script src="assets/js/famous-angular.js"></script>
     <!-- Include the Angular app -->
     <script src="assets/js/app.js"></script>
+    <!-- Include Famous Object Fix -->
+    <script src="assets/js/famousobject.js"></script>
+
     <fa-app ng-controller="ScrollCtrl" style="width: 100%%; height: 100%; overflow: hidden;">
     <!-- The scroll View will start at the index of 1 -->
-    <fa-scroll-view fa-pipe-from="eventHandler" fa-options="options.scrollViewTwo" fa-start-index="1" id="scrollView">
+    <fa-scroll-view fa-object="scrollObject" fa-pipe-from="eventHandler" fa-options="options.scrollViewTwo" fa-start-index="1" id="scrollView">
      <!-- Even though this view is declared first in html, it will will be layed out 2nd -->
      <!-- On page load, the scroll View will scroll to this view, and display it.  -->
       <fa-view>
          <fa-modifier fa-size="[undefined, undefined]">
             <fa-surface fa-pipe-to="eventHandler"
                         class="section"
-                        id="homeHero">
+                        id="homeHero"
+                        fa-background-position-y="'50px'">
                 <div class="wrap">
                     <img src="assets/img/logo.svg" alt="Whine Logo" />
                 </div>
@@ -132,11 +138,11 @@
                         class="section">
                 <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
                     <h2>{{ currentWhine.text }}</h2>
-                    <button data-ng-click="getRandomWhines()">Next Whine</button>
+                    <button data-ng-click="getRandomWhines()" ontouchend="this.onclick=fix">Next Whine</button>
                 </div>
                 <div id="whines" class="wrap hide" >
                     <ul></ul>
-                    <button>Next Whines</button>
+                    <button ontouchend="this.onclick=fix">Next Whines</button>
                 </div>
                 <footer>
                     <p><small>&copy; Created by some boss ass peeps.</small></p>

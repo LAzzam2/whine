@@ -40,11 +40,12 @@ textarea:-moz-placeholder { color:#a9a9a9; }
 }
 $bradius: 5px;
 
-
-
 html, html a {
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+.section {
 }
 
 html, body, .wrapper, .sections {
