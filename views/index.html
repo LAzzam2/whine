@@ -90,11 +90,63 @@
     <script src="assets/js/famous-angular.js"></script>
     <!-- Include the Angular app -->
     <script src="assets/js/app.js"></script>
-    <fa-app ng-controller="HomeCtrl" style="width: 320px; height: 568px;">
-        <fa-modifier>
-            <fa-surface>This will be shown on screen.</fa-surface>
-        </fa-modifier>
-        <div>This will not appear on screen because it is not inside an fa-surface.</div>
-    </fa-app>
+    <fa-app ng-controller="ScrollCtrl" style="width: 100%%; height: 100%; overflow: hidden;">
+    <!-- The scroll View will start at the index of 1 -->
+    <fa-scroll-view fa-pipe-from="eventHandler" fa-options="options.scrollViewTwo" fa-start-index="1" id="scrollView">
+     <!-- Even though this view is declared first in html, it will will be layed out 2nd -->
+     <!-- On page load, the scroll View will scroll to this view, and display it.  -->
+      <fa-view>
+         <fa-modifier fa-size="[undefined, undefined]">
+            <fa-surface fa-pipe-to="eventHandler"
+                        class="section"
+                        id="homeHero">
+                <div class="wrap">
+                    <img src="assets/img/logo.svg" alt="Whine Logo" />
+                </div>
+                <div id="d1" class="drop"><p>Let it out</p><img src="assets/img/arrow.svg" alt="see"/></div>
+            </fa-surface>
+         </fa-modifier>
+      </fa-view>
+
+      <fa-view>
+        <fa-modifier fa-size="[undefined, undefined]">
+            <fa-surface fa-pipe-to="eventHandler"
+                        class="section"
+                        id="postWhine">
+                <div class="wrap">
+                    <h1>Ease your mind.</h1>
+                    <form autocomplete="off">
+                        <input class="name" name="name" placeholder="Name" />
+                        <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+              <div id="d2" class="drop"><p>Browse complaints</p><img src="assets/img/arrow.svg" alt="see"/></div>
+            </fa-surface>
+         </fa-modifier>
+      </fa-view>
+
+      <fa-view>
+         <fa-modifier fa-size="[undefined, undefined]">
+            <fa-surface fa-pipe-to="eventHandler"
+                        class="section">
+                <div id="whine" class="wrap">
+                    <h2></h2>
+                    <button>Next Whine</button>
+                </div>
+                <div id="whines" class="wrap hide">
+                    <ul></ul>
+                    <button>Next Whines</button>
+                </div>
+                <footer>
+                    <p><small>&copy; Created by some boss ass peeps.</small></p>
+                </footer>
+            </fa-surface>
+         </fa-modifier>
+      </fa-view>
+
+    </fa-scroll-view>
+</fa-app>
+
 </body>
 </html>
