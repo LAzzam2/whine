@@ -9,7 +9,7 @@
 <!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en" data-ng-app="whine"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. --> 
 
 <head>
@@ -36,41 +36,22 @@
     initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
     maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width (wrong for most sites)
     -->
-    <meta name="viewport" content="width=device-width, initial-scale=">
-    
-    <!-- Use Iconifyer to generate all the favicons and touch icons you need: http://iconifier.net -->
-    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- concatenate and minify for production -->
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    
-    <!-- Lea Verou's Prefix Free, lets you use un-prefixed properties in your CSS files -->
-    <script src="assets/js/libs/prefixfree.min.js"></script>
-    
-    <!-- This is an un-minified, complete version of Modernizr. 
-         Before you move to production, you should generate a custom build that only has the detects you need. -->
-    <script src="assets/js/libs/modernizr-2.7.1.dev.js"></script>
+    <link rel="stylesheet" href="assets/css/famous.css" />
+    <link rel="stylesheet" href="assets/css/famous-angular.css" />
 
+    <!-- Use Iconifyer to generate all the favicons and touch icons you need: http://iconifier.net -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    
     <!-- shims for backwards compatibility -->
     <script type="text/javascript" src="http://code.famo.us/lib/functionPrototypeBind.js"></script>
     <script type="text/javascript" src="http://code.famo.us/lib/classList.js"></script>
     <script type="text/javascript" src="http://code.famo.us/lib/requestAnimationFrame.js"></script>
-
-    <!-- module loader -->
-    <script type="text/javascript" src="http://code.famo.us/lib/require.js"></script>
-
-    <!-- famous -->
-    <link rel="stylesheet" type="text/css" href="http://code.famo.us/famous/0.3.0/famous.css" />
-    <script type="text/javascript" src="http://code.famo.us/famous/0.3.0/famous.min.js"></script>
-
-    <script type="text/javascript">
-        require.config({
-            baseUrl: './src/'
-        });
-        require(['main']);
-    </script>
-
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700,400' rel='stylesheet' type='text/css'>
     
@@ -98,31 +79,17 @@
 </head>
 
 <body>
-
-<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='assets/js/libs/jquery-1.11.0.min.js'>\x3C/script>")</script>
-
-<!-- this is where we put our custom functions -->
-<!-- don't forget to concatenate and minify if needed -->
-
-<!-- Asynchronous google analytics; this is the official snippet.
-     Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
-     
-<script>
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-XXXXXX-XX']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
--->
-  
+    <!-- Include lodash -->
+    <script src="assets/js/lodash.js"></script>
+    <!-- Include Angular -->
+    <script src="assets/js/angular.js"></script>
+    <!-- Include Famous -->
+    <script src="assets/js/famous-global.js"></script>
+    <!-- Include FamousAngular -->
+    <script src="assets/js/famous-angular.js"></script>
+    <!-- Include the Restangular app -->
+    <script src="assets/js/restangular"></script>
+    <!-- Include the Angular app -->
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
