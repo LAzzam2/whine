@@ -17,9 +17,9 @@ exports.create = function (obj, callback) {
     whine.save(callback);
 };
 
-exports.random = function (callback) {
+exports.random = function (pageSize, callback) {
     Whine.findRandom()
-    .limit(1)
+    .limit(pageSize)
     .exec(callback);
 };
 

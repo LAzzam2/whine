@@ -7,7 +7,7 @@ var sass = require('gulp-sass');
 var htmlmin = require('gulp-htmlmin');
 var svgmin = require('gulp-svgmin');
 var sequence = require('run-sequence');
-var nodemon = require('gulp-nodemon')
+var nodemon = require('gulp-nodemon');
 var del   = require('del');
 
 /*
@@ -19,7 +19,7 @@ gulp.task('build', function(callback) {
         'test',
         ['copydeps', 'buildjs', 'buildcss', 'buildhtml', 'buildimg'],
         callback
-    )
+    );
 });
 
 gulp.task('serve', ['build'], function() {
@@ -30,7 +30,7 @@ gulp.task('serve', ['build'], function() {
             "DEBUG": "*"
         },
         ignore: ['^(app)']
-    })
+    });
     // watch for changes to the source
     gulp.watch('./public/sass/*.scss', ['buildcss']);
     gulp.watch('./public/js/*.js', ['buildjs']);
@@ -142,6 +142,6 @@ gulp.task('buildimg', function() {
 gulp.task('buildjs', function() {
     // copy and minify svgs
     gulp.src('./public/js/*.js')
-        .pipe(uglify({mangle: false}))
+        //.pipe(uglify({mangle: false}))
         .pipe(gulp.dest('build/assets/js'));
 });
