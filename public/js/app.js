@@ -3,6 +3,17 @@ angular.module('whine', ['famous.angular', 'restangular'])
 .config(['RestangularProvider', function(RestangularProvider) {
     RestangularProvider.setBaseUrl('/api/');
 }])
+.controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
+        
+    var EventHandler = $famous['famous/core/EventHandler'];
+    $scope.eventHandler = new EventHandler();
+    
+    $scope.options = {
+      scrollViewTwo: {
+      }
+    };
+}])
+
 .service('whineService', ['Restangular', function(Restangular) {
     // create restangular resources
     var whines = Restangular.all('whines');
@@ -54,8 +65,9 @@ angular.module('whine', ['famous.angular', 'restangular'])
      */
     $scope.getRandomWhines = function() {
         var limit = 10;
-        whineService.create(limit, function(whines) {
+        whineService.random(limit, function(whines) {
             $scope.whineList = whines;
+            $scope.currentWhine = _.first(whines);
         });
     };
 }]);

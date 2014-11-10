@@ -130,11 +130,11 @@
          <fa-modifier fa-size="[undefined, undefined]">
             <fa-surface fa-pipe-to="eventHandler"
                         class="section">
-                <div id="whine" class="wrap">
-                    <h2></h2>
-                    <button>Next Whine</button>
+                <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
+                    <h2>{{ currentWhine.text }}</h2>
+                    <button data-ng-click="getRandomWhines()">Next Whine</button>
                 </div>
-                <div id="whines" class="wrap hide">
+                <div id="whines" class="wrap hide" >
                     <ul></ul>
                     <button>Next Whines</button>
                 </div>
@@ -147,5 +147,6 @@
 
     </fa-scroll-view>
 </fa-app>
+
 </body>
 </html>
