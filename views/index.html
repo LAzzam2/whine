@@ -9,7 +9,7 @@
 <!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en" data-ng-app="whine"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. --> 
 
 <head>
@@ -39,7 +39,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- concatenate and minify for production -->
-    <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/famous.css" />
     <link rel="stylesheet" href="assets/css/famous-angular.css" />
@@ -78,18 +77,21 @@
 
 </head>
 
-<body>
+<body data-ng-app="whine">
     <!-- Include lodash -->
     <script src="assets/js/lodash.js"></script>
     <!-- Include Angular -->
     <script src="assets/js/angular.js"></script>
+    <!-- Include the Restangular app -->
+    <script src="assets/js/restangular.js"></script>
     <!-- Include Famous -->
     <script src="assets/js/famous-global.js"></script>
     <!-- Include FamousAngular -->
     <script src="assets/js/famous-angular.js"></script>
-    <!-- Include the Restangular app -->
-    <script src="assets/js/restangular"></script>
     <!-- Include the Angular app -->
     <script src="assets/js/app.js"></script>
+    <div data-ng-controller="HomeCtrl">
+    {{ test }}
+    </div>
 </body>
 </html>

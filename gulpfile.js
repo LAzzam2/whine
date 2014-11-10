@@ -46,7 +46,7 @@ gulp.task('clean', function(callback) {
  * Linting and testing
  */
 gulp.task('lint', function() {
-    gulp.src('./app/*.js', './public/js/*.js', 'gulpfile.js')
+    gulp.src(['./app/*.js', './public/js/*.js', 'gulpfile.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -72,38 +72,38 @@ gulp.task('testserver', function() {
  */
 gulp.task('copydeps', function() {
     // copy angular
-    gulp.src(
+    gulp.src([
         './bower_components/angular/angular.js',
         './bower_components/angular/angular.min.js',
-        './bower_components/angular/angular.min.js.map')
+        './bower_components/angular/angular.min.js.map'])
             .pipe(gulp.dest('build/assets/js'));
     // copy restangular
-    gulp.src(
+    gulp.src([
         './bower_components/restangular/dist/restangular.js',
-        './bower_components/restangular/dist/restangular.min.js')
+        './bower_components/restangular/dist/restangular.min.js'])
             .pipe(gulp.dest('build/assets/js'));
     // copy famous
-    gulp.src(
+    gulp.src([
         './bower_components/famous/dist/famous-global.js',
-        './bower_components/famous/dist/famous-global.min.js')
+        './bower_components/famous/dist/famous-global.min.js'])
             .pipe(gulp.dest('build/assets/js'));
     gulp.src(
         './bower_components/famous/dist/famous.css')
             .pipe(cssmin())
             .pipe(gulp.dest('build/assets/css'));
     // copy famous-angular
-    gulp.src(
+    gulp.src([
         './bower_components/famous-angular/dist/famous-angular.js',
-        './bower_components/famous-angular/dist/famous-angular.min.js')
+        './bower_components/famous-angular/dist/famous-angular.min.js'])
             .pipe(gulp.dest('build/assets/js'));
     gulp.src(
         './bower_components/famous-angular/dist/famous-angular.css')
             .pipe(cssmin())
             .pipe(gulp.dest('build/assets/css'));
     // copy lodash
-    gulp.src(
+    gulp.src([
         './bower_components/lodash/dist/lodash.js',
-        './bower_components/lodash/dist/lodash.min.js')
+        './bower_components/lodash/dist/lodash.min.js'])
             .pipe(gulp.dest('build/assets/js'));
     // copy angular-facebook
     gulp.src(
