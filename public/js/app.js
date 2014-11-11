@@ -12,20 +12,20 @@ angular.module('whine', ['famous.angular', 'restangular'])
       scrollViewTwo: {
       }
     };
+    
     faObject("scrollObject",function(scrollObject){
-	    scrollObject.sync.on("start", function (event) {
-  			test();
-		});
-	});
-    faObject("scrollObject",function(scrollObject){
+    	scrollObject.sync.on("start",function(event){
+    		console.log('start');
+	    	test(event);
+	    });
 	    scrollObject.sync.on("update", function (event) {
-  			test();
+	    	console.log('update');
+  			test(event);
 		});
-	});
-	faObject("scrollObject",function(scrollObject){
-	    scrollObject.sync.on("end", function (event) {
-  			test();
-		});
+		scrollObject.sync.on("end",function(event){
+			console.log('end');
+	    	test(event);
+	    });
 	});
 }])
 
