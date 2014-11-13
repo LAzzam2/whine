@@ -198,12 +198,9 @@
 		backgroundScroll: function(x){
 			var y = x;
 			var sections = $('.section').parent('li');
-			sections.width(window.innerWidth);
-			sections.height(window.innerHeight);
 			$.each(sections,function(){
 				var bg = $(this).children('.section').children('.bg');
 				var index = $(this).index();
-				console.log(bg[0], index);
 				bg[0].style.webkitTransform = "translate(-50%,"+(-y-($(window).height()*index))+"px)";
 			});
 		},
@@ -218,7 +215,7 @@
 	});
 
 	$(window).resize(function() {
-
+		site.init();
 	});
 
 

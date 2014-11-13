@@ -264,7 +264,7 @@ li {
 }
 #browseWhines {
 	.bg {
- background: url(../img/bitchinSectionBG.jpg) no-repeat center center; 
+ 		background: url(../img/bitchinSectionBG.jpg) no-repeat center center; 
 		position: absolute;
 		top: 0%; left: 50%;
 		@include center(-50%,0%);
@@ -279,7 +279,7 @@ li {
 	position: absolute;
 	top: 0; left: 0;
 	width: 100%; height: 100%;
-	opacity: 1;
+	opacity: .5;
 	background: -moz-linear-gradient(top, rgba(0,0,0,.8) 0%, rgba(0,0,0,0.01) 99%, rgba(0,0,0,0) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,.7)), color-stop(99%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, rgba(0,0,0,.8) 0%,rgba(0,0,0,0.01) 99%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -288,9 +288,17 @@ li {
 	background: linear-gradient(to bottom, rgba(0,0,0,.8) 0%,rgba(0,0,0,0.01) 99%,rgba(0,0,0,0) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 	pointer-events: none;
+	z-index: 15;
 }
-.section:nth-child(2):before, .section:nth-child(4):after {
+li:first-child  {
+	.section:before{
 	opacity: 0;
+	}
+}
+li:last-child  {
+	.section:after{
+	opacity: 0;
+	}
 }
 // .section:after {
 // 	content: '';
