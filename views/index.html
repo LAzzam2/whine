@@ -36,7 +36,7 @@
     initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
     maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width (wrong for most sites)
     -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     
     <!-- concatenate and minify for production -->
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -98,6 +98,7 @@
     <script src="assets/js/app.js"></script>
 
     <div class="wrapper">
+    <div id="mBar"></div>
   <div id="logo">
     <a href="/"><img src="assets/img/logosmall.svg" alt="whine" /></a>
   </div>
