@@ -207,7 +207,7 @@ html, body, .wrapper, .sections, .section {
 	width: 100px;
 	height: auto;
 	z-index: 10;
-	@include transition(top, 850ms)
+	@include transition(all, 850ms)
 }
 #toggle {
 	position: fixed;
@@ -266,8 +266,8 @@ li {
 		@include center(-50%,0%);
 		height: auto;
 		width: auto;
-		min-height: 100%;
-		min-width: 100%;
+		min-height: 101%;
+		min-width: 101%;
   	}
 }
 #postWhine {
@@ -283,8 +283,8 @@ li {
 		@include center(-50%,0%);
 		height: auto;
 		width: auto;
-		min-height: 100%;
-		min-width: 100%;
+		min-height: 101%;
+		min-width: 101%;
   	}
 }
 #browseWhines {
@@ -300,8 +300,8 @@ li {
 		@include center(-50%,0%);
 		height: auto;
 		width: auto;
-		min-height: 100%;
-		min-width: 100%;
+		min-height: 101%;
+		min-width: 101%;
   }
 }
 .section:before {
@@ -410,13 +410,13 @@ li:last-child  {
 			@include transition(all, 250ms);
 			background: none;
 			border: none;
-			outline: 1px solid rgba(255,255,255,.4);
+			border: 1px solid rgba(255,255,255,.4);
 			background-color: rgba(255,255,255,.1);
 			padding: 5px 0px;
 			width: 150px;
 			margin-top: 25px;
 			color: white;
-			border-radius: 2px;
+			border-radius: 10px;
 			box-sizing: border-box;
 		}
 		button {
@@ -462,6 +462,9 @@ li:last-child  {
 			border: 1px solid white;
 			padding: 10px;
 			border-radius: $bradius;
+			resize: none;
+			box-shadow: 0 0 25px rgba(0,0,0,.2) inset;
+			background-color: rgba(255,255,255,.05);
 		}
 		textarea, input[name=name] {
 			line-height: 1.3em;
@@ -570,7 +573,6 @@ li:last-child  {
 		width: 100px;
 		height: auto;
 		z-index: 10;
-		@include transition(top, 750ms)
 	}
 	#toggle {
 		top: 20px;

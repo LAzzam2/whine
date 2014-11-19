@@ -20,7 +20,7 @@
 			site.pullWhineGroup(whinePage);
 			site.clickFunc();
 			$('form').css('height',$('form').height());
-			// site.skrollrInit();
+			site.skrollrInit();
 			site.logoScroll();
 			site.navScroll();
 			site.backgroundScroll();
@@ -30,7 +30,16 @@
 			}
 
 			function loaded () {
-				myScroll = new IScroll('#sections', { probeType: 3, mouseWheel: true });
+				myScroll = new IScroll('#sections', { 
+					probeType: 3, 
+					mouseWheel: true, 
+					indicators: [{
+						el: $('.wrap'),
+						resize: false,
+						ignoreBoundaries: true,
+						speedRatioY: 0.4
+					}]
+				});
 
 				myScroll.on('scroll', updatePosition);
 				myScroll.on('scrollEnd', updatePosition);
@@ -120,9 +129,8 @@
 				site.pullWhineGroup(whinePage);
 			});
 			$('#d1').on('click', function(){
-			        $('html,body').animate({
-			          scrollTop: $(window).height()
-			        }, 1500);
+				alert('test');
+				myScroll.scrollTo(0, 500);
 			});
 			$('#d2').on('click', function(){
 			        $('html,body').animate({
@@ -163,38 +171,6 @@
 			$('#whines').removeClass("hide");
 			$('#whine').addClass("hide");
 		},
-		skrollrInit: function(){
-			var sections = $('.section');
-			var windowHeight = $(window).height();
-			$.each(sections,function(){
-				var index = $(this).index();
-				var wrap = $(this).children('.wrap');
-				var dropP = $(this).children('.drop').children('p');
-				var dropImg = $(this).children('.drop').children('img');
-				var contentHeight = wrap.height();
-					
-				wrap.attr('data--200-center','opacity: 0; top: 40%;');
-				wrap.attr('data--100-center','opacity: 1; top: 50%;');
-				wrap.attr('data-center','opacity: 1; top: 50%;');
-				wrap.attr('data-100-center','opacity: 1; top: 50%;');
-				wrap.attr('data-200-center','opacity: 0; top: 60%;');
-
-
-				dropP.attr('data-bottom','opacity: 1;');
-				dropP.attr('data--150-bottom','opacity: 0;');
-
-				dropImg.attr('data-bottom','opacity: 1;');
-				dropImg.attr('data--150-bottom','opacity: 0;');
-			});
-
-			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- 				return
-			}else {
-				skrollr.init({
-					forceHeight: false
-				});
-			}
-		},
 		backgroundScroll: function(x){
 			var y = x;
 			var sections = $('.section').parent('li');
@@ -211,7 +187,6 @@
 	});
 
 	$(window).load(function() {
-
 	});
 
 	$(window).resize(function() {
