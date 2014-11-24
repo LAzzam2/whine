@@ -34,13 +34,11 @@
           momentum: true,
           probeType: 3, 
           mouseWheel: true,
-          mouseWheelSpeed: -100,
         });
 
         console.dir(myScroll.options);
 
         myScroll.on('scroll', updatePosition);
-        myScroll.on('scrollEnd', updatePosition);
       }
       loaded();
       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
