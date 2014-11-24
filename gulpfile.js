@@ -105,6 +105,11 @@ gulp.task('copydeps', function() {
         './bower_components/lodash/dist/lodash.js',
         './bower_components/lodash/dist/lodash.min.js'])
             .pipe(gulp.dest('build/assets/js'));
+    // copy lodash
+    gulp.src([
+        './assets/',
+        './bower_components/lodash/dist/lodash.min.js'])
+            .pipe(gulp.dest('build/assets/js'));
     // copy angular-facebook
     gulp.src(
         './bower_components/angular-facebook/lib/angular-facebook.js')
