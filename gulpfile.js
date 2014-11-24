@@ -121,7 +121,7 @@ gulp.task('copydeps', function() {
     gulp.src([
         './node_modules/iscroll/build/iscroll.js',
         './node_modules/iscroll/build/iscroll-probe.js'])
-            .pipe(gulp.dest('build/assets/js'))
+            .pipe(gulp.dest('build/assets/js'));
 });
 
 gulp.task('buildcss', function() {
