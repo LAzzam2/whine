@@ -12,21 +12,6 @@ angular.module('whine', ['famous.angular', 'restangular'])
       scrollViewTwo: {
       }
     };
-    
-    faObject("scrollObject",function(scrollObject){
-    	scrollObject.sync.on("start",function(event){
-    		console.log('start');
-	    	test(event);
-	    });
-	    scrollObject.sync.on("update", function (event) {
-	    	console.log('update');
-  			test(event);
-		});
-		scrollObject.sync.on("end",function(event){
-			console.log('end');
-	    	test(event);
-	    });
-	});
 }])
 
 .service('whineService', ['Restangular', function(Restangular) {
