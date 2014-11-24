@@ -31,7 +31,7 @@
 
       function loaded () {
         myScroll = new IScroll('#sections', { 
-          probeType: 3, 
+          probeType: 2, 
           mouseWheel: true,
         });
 

@@ -397,7 +397,7 @@ li:last-child  {
 		}
 	}
 	.drop:hover{
-		opacity: .8 !important;
+		opacity: .8;
 		p {
 			@include center(-50%,-35%);
 		}
