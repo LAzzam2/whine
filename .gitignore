@@ -19,12 +19,6 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
-# build directory for client stuff
-build
-
 # Editor stuff
 .sass-cache
 _media
