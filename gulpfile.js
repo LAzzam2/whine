@@ -112,6 +112,11 @@ gulp.task('copydeps', function() {
             .pipe(uglify({mangle: false}))
             .pipe(rename('angular-facebook.min.js'))
             .pipe(gulp.dest('build/assets/js'));
+    // copy iScroll
+    gulp.src([
+        './node_modules/iscroll/build/iscroll.js',
+        './node_modules/iscroll/build/iscroll-probe.js'])
+            .pipe(gulp.dest('build/assets/js'))
 });
 
 gulp.task('buildcss', function() {
