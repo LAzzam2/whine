@@ -239,6 +239,20 @@ html, body, .wrapper, .sections, .section {
 		opacity: .6;
 	}
 }
+#login {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 500;
+	li {
+		float: left;
+		margin-right: 15px;
+		color: white;
+		padding: 5px;
+		background-color: rgba(255,255,255,.3);
+		cursor: hand; cursor: pointer;
+	}
+}
 li {
 	list-style: none;
 }
@@ -363,7 +377,6 @@ li:last-child  {
 		position: absolute;
 		bottom: 15px; left: 50%;
 		@include center(-50%,0);
-		@include transition(opacity, 250ms);
 		width: 50px;
 		z-index: 100;
 		cursor: pointer;
@@ -384,7 +397,7 @@ li:last-child  {
 		}
 	}
 	.drop:hover{
-		opacity: .8;
+		opacity: .8 !important;
 		p {
 			@include center(-50%,-35%);
 		}

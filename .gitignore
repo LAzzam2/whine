@@ -23,3 +23,4 @@ coverage
 .sass-cache
 _media
 config.rb
+dump.rdb

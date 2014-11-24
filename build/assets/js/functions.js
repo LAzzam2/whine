@@ -18,7 +18,12 @@
       site.navScroll();
       site.backgroundScroll();
 
+      setTimeout(function(){
+        $('#next').click();
+      }, 1)
+
       function updatePosition() {
+        $('.drop').mouseout();
         site.backgroundScroll(this.y);
         site.logoScroll(this.y);
         site.navScroll(this.y);
@@ -28,8 +33,9 @@
         myScroll = new IScroll('#sections', { 
           probeType: 3, 
           mouseWheel: true,
-          bounce: false,
         });
+
+        console.dir(myScroll.options);
 
         myScroll.on('scroll', updatePosition);
         myScroll.on('scrollEnd', updatePosition);
@@ -147,16 +153,6 @@
         event.preventDefault();
         myScroll.scrollTo('',0, 1000);
       });
-      $('#toggle>ul>li:eq(0)').on('click', function(){
-        $('#toggle li').attr('class','');
-        $(this).attr("class","active");
-        site.browse();
-      });
-      $('#toggle>ul>li:eq(1)').on('click', function(){
-        $('#toggle li').attr('class','');
-        $(this).attr("class","active");
-        site.list();
-      });
       $('textarea').on('focus', function(){
       });
       $('textarea').on('blur', function(){
@@ -176,34 +172,51 @@
         $('.wrap h1').animate({opacity: '1'}, 1000);
       });
     },
-    browse: function(){
-      $('#whines').addClass("hide");
-      $('#whine').removeClass("hide");
-    },
-    list: function(){
-      $('#whines').removeClass("hide");
-      $('#whine').addClass("hide");
-    },
     backgroundScroll: function(distance){
+      var height = window.innerHeight;
       var distance = distance;
-      var sections = $('.section').parent('li');
-
       var sections = $('.section').parent('li');
       sections.width(window.innerWidth);
       sections.height(window.innerHeight);
       $.each(sections,function(){
-        var bg = $(this).children('.section').children('.bg');
-        var wrap = $(this).children('.section').children('.wrap');
-        var index = $(this).index();
-        var top = index*window.innerHeight;
 
+        var index = $(this).index();
+        var bg = $(this).children('.section').children('.bg');
         bg.css({
-          'transform':"translate(-50%,"+(-distance-($(window).height()*index))+"px)",
-          '-moz-transform':"translate(-50%,"+(-distance-($(window).height()*index))+"px)",
-          '-ms-transform':"translate(-50%,"+(-distance-($(window).height()*index))+"px)",
-          '-webkit-transform':"translate(-50%,"+(-distance-($(window).height()*index))+"px)",
-          '-o-transform':"translate(-50%,"+(-distance-($(window).height()*index))+"px)"
+          'transform':"translate(-50%,"+(-distance-(height*index))+"px)",
+          '-moz-transform':"translate(-50%,"+(-distance-(height*index))+"px)",
+          '-ms-transform':"translate(-50%,"+(-distance-(height*index))+"px)",
+          '-webkit-transform':"translate(-50%,"+(-distance-(height*index))+"px)",
+          '-o-transform':"translate(-50%,"+(-distance-(height*index))+"px)"
         });
+
+
+        var wrap = $(this).children('.section').children('.wrap');
+        var button = $(this).children('.section').children('.drop');
+        var wrapHeight = wrap.height();
+        var top = (index+1)*height;
+
+        var scrollStart = index*height;
+        var scrollMiddle = scrollStart+(height/2);
+        var scrollEnd = scrollStart+height;
+
+        if(-distance >= scrollStart){
+          wrap.css({
+            'opacity':''+(1+((distance+(height*index))/(top/2)))+'',
+          });
+
+          var buttonOpacity = (.6+((distance+(height*index))/(top/3)));
+          button.css({
+            'opacity':''+buttonOpacity+'',
+          });
+          if(buttonOpacity <= 0){
+            button.css({'pointer-events':'none'});
+          }else{
+            button.css({'pointer-events':'auto'});
+          }
+        }
+
+        console.log(scrollStart, scrollMiddle, scrollEnd);
       });
     }
   }
