@@ -100,8 +100,8 @@
   </div>
   <div id="toggle">
     <ul>
-      <li><img src="assets/img/facebook.svg" alt="browse" /></li>
-      <li><img src="assets/img/twitter.svg" alt="list" /></li>
+      <li><a href="auth/facebook" target="_blank"><img src="assets/img/facebook.svg" alt="browse" /></a></li>
+      <li><a href="auth/twitter" target="_blank"><img src="assets/img/twitter.svg" alt="list" /></a></li>
     </ul>
   </div>
    
@@ -134,6 +134,7 @@
       <div id="browseWhines" class="section">
         <div class="bg"></div>
         <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
+            <h3>{{ currentWhine.author }}</h3>
             <h2>{{ currentWhine.text }}</h2>
             <button id="next" data-ng-click="getRandomWhines()" ontouchend="this.onclick=fix">Next Whine</button>
         </div>

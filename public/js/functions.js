@@ -31,8 +31,10 @@
 
       function loaded () {
         myScroll = new IScroll('#sections', { 
-          probeType: 2, 
+          momentum: true,
+          probeType: 3, 
           mouseWheel: true,
+          mouseWheelSpeed: -100,
         });
 
         console.dir(myScroll.options);
@@ -81,11 +83,13 @@
           distance      = -distance;
       if( distance >= topLimit){
         $('#toggle').css({
-          opacity: '1'
+          opacity: '1',
+          pointerEvents: 'auto'
         });
       }else{
         $('#toggle').css({
-          opacity: '0'
+          opacity: '0',
+          pointerEvents: 'none'
         });
       }
     },
