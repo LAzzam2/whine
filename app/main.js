@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var redis = require('redis');
 var winston = require('winston');
+var path = require('path');
 
 var whinesRouter = require('./views/whines');
 
@@ -51,7 +52,13 @@ if (process.env.NODE_ENV === 'production') {
 var app = express();
 app.use(bodyParser.json());
 winston.info('CWD: ' + process.cwd());
-app.use('/', express.static(process.cwd() + '../build'));
+var staticDirectory = "";
+if (process.env.NODE_ENV === 'production') {
+    staticDirectory = path.resolve(process.cwd(), '..', 'build');
+} else {
+    staticDirectory = path.resolve(process.cwd(), 'build');
+}
+app.use('/', express.static(staticDirectory));
 app.use('/api/whines', whinesRouter);
 
 /*
