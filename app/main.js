@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
 var app = express();
 app.use(bodyParser.json());
 winston.info('CWD: ' + process.cwd());
-app.use('/', express.static(process.cwd() + '/build'));
+app.use('/', express.static(process.cwd() + '../build'));
 app.use('/api/whines', whinesRouter);
 
 /*
