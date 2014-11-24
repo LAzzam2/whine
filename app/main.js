@@ -44,11 +44,13 @@ if (process.env.NODE_ENV === 'production') {
     redisClient = redis.createClient();
 }
 
+
 /*
  * Add routes
  */
 var app = express();
 app.use(bodyParser.json());
+winston.info('CWD: ' + process.cwd());
 app.use('/', express.static(process.cwd() + '/build'));
 app.use('/api/whines', whinesRouter);
 
