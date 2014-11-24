@@ -4,9 +4,16 @@ var bodyParser = require('body-parser');
 var redis = require('redis');
 var winston = require('winston');
 var path = require('path');
+var session = require('express-session');
+var passport = require('passport');
+var cookieParser = require('cookie-parser');
+var uuid = require('node-uuid');
 
 var whinesRouter = require('./views/whines');
+var authRouter = require('./views/auth');
 
+
+var app = express();
 
 /*
  * Set up mongoose with either production or test credentials
@@ -47,21 +54,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 /*
- * Add routes
- */
-var app = express();
-app.use(bodyParser.json());
-winston.info('CWD: ' + process.cwd());
-var staticDirectory = "";
-if (process.env.NODE_ENV === 'production') {
-    staticDirectory = path.resolve(process.cwd(), '..', 'build');
-} else {
-    staticDirectory = path.resolve(process.cwd(), 'build');
-}
-app.use('/', express.static(staticDirectory));
-app.use('/api/whines', whinesRouter);
-
-/*
  * Add rate limiting if production is enabled
  */
 if (process.env.LIMIT === 'true') {
@@ -96,6 +88,41 @@ if (process.env.LIMIT === 'true') {
       expire: 1000 * 60
     });
 }
+
+/*
+ * Setup session
+ */
+app.use(cookieParser());
+app.use(session({
+  name: 'whine.cookie',
+  secret: process.env.EXPRESS_SESSION_SECRET || uuid.v4(),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      maxAge: 72 * 60 * 60 * 1000
+  }
+}));
+
+/*
+ * Configure passport
+ */
+app.use(passport.initialize());
+app.use(passport.session());
+
+/*
+ * Add routes
+ */
+app.use(bodyParser.json());
+winston.info('CWD: ' + process.cwd());
+var staticDirectory = "";
+if (process.env.NODE_ENV === 'production') {
+    staticDirectory = path.resolve(process.cwd(), '..', 'build');
+} else {
+    staticDirectory = path.resolve(process.cwd(), 'build');
+}
+app.use('/', express.static(staticDirectory));
+app.use('/api/whines', whinesRouter);
+app.use('/auth', authRouter);
 
 /*
  * Configure app port and run
