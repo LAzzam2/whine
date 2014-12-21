@@ -1,6 +1,6 @@
 var _ = require('underscore');
 
-allowedProperties = [
+var allowedProperties = [
     'rating',
 ];
 
