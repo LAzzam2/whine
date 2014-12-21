@@ -97,7 +97,7 @@ app.use(cookieParser());
 app.use(session({
   name: 'whine.cookie',
   secret: process.env.EXPRESS_SESSION_SECRET || uuid.v4(),
-  resave: false,
+  resave: true,
   saveUninitialized: false,
   cookie: {
       maxAge: 72 * 60 * 60 * 1000
@@ -109,14 +109,6 @@ app.use(session({
  */
 app.use(passport.initialize());
 app.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
 
 /*
  * Add routes

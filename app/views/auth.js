@@ -37,7 +37,6 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-    debugger;
     done(null, {
         id: user.id,
         name: user.displayName
