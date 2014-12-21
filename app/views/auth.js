@@ -10,6 +10,11 @@ authRouter.route('/').get(function(req, res) {
     });
 });
 
+authRouter.route('/logout').get(function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
+
 authRouter.route('/twitter').get(passport.authenticate('twitter'));
 
 authRouter.route('/twitter/callback').get(
