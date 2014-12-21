@@ -8,7 +8,7 @@ var ratingRouter = express.Router();
 ratingRouter.route('/:whineId/rate')
     .get(function(req, res) {
         var whineId = req.params.whineId;
-        var userId = req.user.id;
+        var userId = req.user;
         ratingService.getRating(whineId, userId, function(err, value) {
             rating = ratingResponder.build(value);
             res.json(rating);
@@ -26,7 +26,7 @@ ratingRouter.route('/:whineId/rate')
         }
         var rating = req.body.rating;
         var whineId = req.params.whineId;
-        var userId =  req.user.id;
+        var userId =  req.user;
         ratingService.setRating(whineId, userId, rating, function(err) {
             if (!err) {
                 res.status(204).json({});
