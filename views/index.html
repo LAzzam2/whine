@@ -98,13 +98,19 @@
   <div id="logo">
     <a href="/"><img src="assets/img/logosmall.svg" alt="whine" /></a>
   </div>
-  <div id="toggle">
-    <ul>
-      <li><a href="auth/facebook" target="_blank"><img src="assets/img/facebook.svg" alt="browse" /></a></li>
-      <li><a href="auth/twitter" target="_blank"><img src="assets/img/twitter.svg" alt="list" /></a></li>
-    </ul>
-  </div>
+
+  <a href="https://twitter.com/TopWhines" target="_blank">
+    <div id="toggle">
+      <img src="assets/img/twitter.svg" alt="list" />
+      <p>Top bitches</p>
+    </div>
+  </a>
    
+  <div id="login">
+    <div class="close">X</div>
+    To vote, please <a href="auth/twitter" target="_blank">login</a> and verify your identity using twitter. 
+  </div>
+
   <div id="sections" class="sections"> 
   <ul>
     <li>
@@ -134,9 +140,12 @@
       <div id="browseWhines" class="section">
         <div class="bg"></div>
         <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
-            <h3>{{ currentWhine.author }}</h3>
+            <h3 class="author">{{ currentWhine.author }}</h3>
+            <div class="likes">
+              <h3>23 likes</h3>
+            </div>
             <h2>{{ currentWhine.text }}</h2>
-            <button id="next" data-ng-click="getRandomWhines()" ontouchend="this.onclick=fix">Next Whine</button>
+            <button id="next" data-ng-click="getRandomWhines()">Next Whine</button>
         </div>
          <!-- <div id="whines" class="wrap hide">
           <ul></ul>
@@ -151,62 +160,5 @@
   </div>
 
   </div>
-
-   <!--  <fa-app ng-controller="ScrollCtrl" style="width: 100%%; height: 100%; overflow: hidden;">
-    <fa-scroll-view fa-object="scrollObject" fa-pipe-from="eventHandler" fa-options="options.scrollViewTwo" fa-start-index="1" id="scrollView">
-      <fa-view>
-         <fa-modifier fa-size="[undefined, undefined]">
-            <fa-surface fa-pipe-to="eventHandler"
-                        class="section"
-                        id="homeHero"
-                        fa-background-position-y="'50px'">
-                <div class="wrap">
-                    <img src="assets/img/logo.svg" alt="Whine Logo" />
-                </div>
-                <div id="d1" class="drop"><p>Let it out</p><img src="assets/img/arrow.svg" alt="see"/></div>
-            </fa-surface>
-         </fa-modifier>
-      </fa-view>
-
-      <fa-view>
-        <fa-modifier fa-size="[undefined, undefined]">
-            <fa-surface fa-pipe-to="eventHandler"
-                        class="section"
-                        id="postWhine">
-                <div class="wrap">
-                    <h1>Ease your mind.</h1>
-                    <form autocomplete="off">
-                        <input class="name" name="name" placeholder="Name" />
-                        <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
-                        <input type="submit" value="submit">
-                    </form>
-                </div>
-              <div id="d2" class="drop"><p>Browse complaints</p><img src="assets/img/arrow.svg" alt="see"/></div>
-            </fa-surface>
-         </fa-modifier>
-      </fa-view>
-
-      <fa-view>
-         <fa-modifier fa-size="[undefined, undefined]">
-            <fa-surface fa-pipe-to="eventHandler"
-                        class="section">
-                <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
-                    <h2>{{ currentWhine.text }}</h2>
-                    <button data-ng-click="getRandomWhines()" ontouchend="this.onclick=fix">Next Whine</button>
-                </div>
-                <div id="whines" class="wrap hide" >
-                    <ul></ul>
-                    <button ontouchend="this.onclick=fix">Next Whines</button>
-                </div>
-                <footer>
-                    <p><small>&copy; Created by some boss ass peeps.</small></p>
-                </footer>
-            </fa-surface>
-         </fa-modifier>
-      </fa-view>
-
-    </fa-scroll-view>
-</fa-app> -->
-
 </body>
 </html>
