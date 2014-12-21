@@ -181,6 +181,44 @@ html, html a {
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
+#user, #logo, #toggle {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#user {
+	position: absolute;
+	top: 35px; right: 40px;
+	z-index: 500;
+	@include transition(all, 250ms);
+	p, a {
+		@include transition(all, 250ms);
+	}
+	p {
+		color: white;
+		float: left;
+		margin-right: 15px;
+		opacity: .5;
+		pointer-events: none;
+	}
+	a {
+		color: white; text-decoration: none;
+		float: left;
+		opacity: .5;
+		cursor: hand; cursor: pointer;
+	}
+	a:hover {
+		opacity: 1;
+	}
+}
+#user.loggedIn {
+}
+#user:hover {
+}
 
 .section {
 }
@@ -649,7 +687,7 @@ li:last-child  {
 	}
 	#toggle {
 		top: 20px;
-		left: 100%;
+		left: 170px;
 		width: 45px;
 		@include center(-115%,0);
 		border-left: none;
@@ -659,6 +697,10 @@ li:last-child  {
 			max-width: 80%;
 			left: 52%;
 		}
+	}
+	#user {
+		top: 25px;
+		right: 20px;
 	}
 	.section {
 		.wrap {
