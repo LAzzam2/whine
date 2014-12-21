@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 var uuid = require('node-uuid');
 
 var whinesRouter = require('./views/whines');
+var ratingRouter = require('./views/rating');
 var authRouter = require('./views/auth');
 
 
@@ -130,6 +131,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use('/', express.static(staticDirectory));
 app.use('/api/whines', whinesRouter);
+app.use('/api/whine', ratingRouter);
 app.use('/auth', authRouter);
 
 /*
