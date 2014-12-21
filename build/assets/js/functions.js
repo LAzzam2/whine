@@ -56,6 +56,7 @@
       if(user[1] == true){
         $('#user').addClass('loggedIn');
         $('#user .name').html(user[3]);
+        $('input[name]').val(user[3]);
       }
     },
     logoScroll: function(distance){
