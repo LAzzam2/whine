@@ -5,9 +5,13 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var authRouter = express.Router();
 
 authRouter.route('/').get(function(req, res) {
-    res.json({
+    var data = {
         loggedIn: req.user ? true : false
-    });
+    };
+    if (req.user) {
+        data.name = req.user.name;
+    }
+    res.json(data);
 });
 
 authRouter.route('/logout').get(function(req, res) {
@@ -33,7 +37,10 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+    done(null, {
+        id: user.id,
+        name: user.displayName
+    });
 });
 
 passport.deserializeUser(function(id, done) {
