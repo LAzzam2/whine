@@ -595,6 +595,16 @@ li:last-child  {
 	.close:hover {
 		opacity: 1;
 	}
+	a {
+		font-weight: bold;
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		padding-bottom: 5px;
+		@include transition(all, 250ms);
+	}
+	a:hover {
+	}
 }
 
 .famous-group {
@@ -653,7 +663,7 @@ li:last-child  {
 	.section {
 		.wrap {
 			h1, h2 {
-				font-size: 1.8em;
+				font-size: 1.4em;
 			}
 			form {
 				textarea {
@@ -667,11 +677,13 @@ li:last-child  {
 
 			}
 		}
+		#whine {
+			width: 85%;
+		}	
 	}
 	#toggle:hover {
 		width: 45px;
 	}
-		
 }
 
 

@@ -233,13 +233,13 @@
       if(!$('body').hasClass('login')){
         $('#sections').animate({opacity: .4});
         $('#login').css('pointer-events','auto');
-        $('#login').animate({opacity: 1}, function(){
+        $('#login').delay(150).animate({opacity: 1}, function(){
           $('body').removeClass('login');
           $('body').addClass('login');
         });
       }else{
         $('body').removeClass('login');
-        $('#sections').animate({opacity: 1});
+        $('#sections').delay(150).animate({opacity: 1});
         $('#login').css('pointer-events','none');
         $('#login').animate({opacity: 0});
       }
