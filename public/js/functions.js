@@ -22,7 +22,7 @@
 
       setTimeout(function(){
         $('#next').click();
-      }, 1)
+      }, 300)
 
       function updatePosition() {
         $('.drop').mouseout();
@@ -44,9 +44,23 @@
       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     },
     auth: function(){
-      $.getJSON('/auth',function(json){
-          site.user = json;              
-      });  
+      $.getJSON( "auth", function( data ) {
+        var user = [];
+        $.each( data, function( key, val ) {
+          user.push( key, val);
+        });
+        site.userState(user);
+      }); 
+    },
+    userState: function(user){
+      site.user = user;
+      if(user[1] == true){
+        $('#user').addClass('loggedIn');
+        $('#user .name').html(user[3]);
+        $('input[name]').val(user[3]);
+        $('#user a').attr('href','auth/logout').html('Logout');
+      }else{
+      }
     },
     logoScroll: function(distance){
       var topLimit      = window.innerHeight/2;
@@ -250,9 +264,9 @@
       }
     },
     like: function(){
-      console.log(site.user['loggedIn']);
-      if(site.user['loggedIn'] == true){
-        console.log('thanks for voting!');
+      console.log(site.user[1]);
+      if(site.user[1] == true){
+        alert("Thanks for voting! Loljk the voting isn't working yet. Once it is... shits getting real");
       }else{
         site.login();
       }
