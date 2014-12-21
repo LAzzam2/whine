@@ -58,6 +58,8 @@
         $('#user').addClass('loggedIn');
         $('#user .name').html(user[3]);
         $('input[name]').val(user[3]);
+        $('#user a').attr('href','auth/logout').html('Logout');
+      }else{
       }
     },
     logoScroll: function(distance){
@@ -264,7 +266,7 @@
     like: function(){
       console.log(site.user[1]);
       if(site.user[1] == true){
-        alert('Thanks for voting!');
+        alert("Thanks for voting! Loljk the voting isn't working yet. Once it is... shits getting real");
       }else{
         site.login();
       }
