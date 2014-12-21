@@ -22,7 +22,6 @@
 
       setTimeout(function(){
         $('#next').click();
-        site.check();
       }, 300)
 
       function updatePosition() {
@@ -45,15 +44,18 @@
       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     },
     auth: function(){
-      var userRequest = $.getJSON('/auth',function(json){
-          site.user = json;   
-      });  
+      $.getJSON( "auth", function( data ) {
+        var user = [];
+        $.each( data, function( key, val ) {
+          user.push( key, val);
+        });
+        site.userState(user);
+      }); 
     },
-    check: function(){
-      console.log(site.user['loggedIn']);
-      if(site.user['loggedIn'] == true){
+    userState: function(user){
+      if(user[1] == true){
         $('#user').addClass('loggedIn');
-        $('#user .name').html(site.user['name']);
+        $('#user .name').html(user[3]);
       }
     },
     logoScroll: function(distance){
@@ -258,8 +260,8 @@
       }
     },
     like: function(){
-      console.log(site.user['loggedIn']);
-      if(site.user['loggedIn'] == true){
+      console.log(user[1]);
+      if(user[1] == true){
         alert('Thanks for voting!');
       }else{
         site.login();
