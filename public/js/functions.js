@@ -53,6 +53,7 @@
       }); 
     },
     userState: function(user){
+      site.user = user;
       if(user[1] == true){
         $('#user').addClass('loggedIn');
         $('#user .name').html(user[3]);
@@ -261,8 +262,8 @@
       }
     },
     like: function(){
-      console.log(user[1]);
-      if(user[1] == true){
+      console.log(site.user[1]);
+      if(site.user[1] == true){
         alert('Thanks for voting!');
       }else{
         site.login();
