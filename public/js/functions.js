@@ -17,6 +17,8 @@
       site.logoScroll();
       site.navScroll();
       site.backgroundScroll();
+      site.auth();
+      site.user;
 
       setTimeout(function(){
         $('#next').click();
@@ -36,12 +38,15 @@
           mouseWheel: true,
         });
 
-        console.dir(myScroll.options);
-
         myScroll.on('scroll', updatePosition);
       }
       loaded();
       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    },
+    auth: function(){
+      $.getJSON('/auth',function(json){
+          site.user = json;              
+      });  
     },
     logoScroll: function(distance){
       var topLimit      = window.innerHeight/2;
@@ -245,8 +250,9 @@
       }
     },
     like: function(){
-      if(false){
-
+      console.log(site.user['loggedIn']);
+      if(site.user['loggedIn'] == true){
+        console.log('thanks for voting!');
       }else{
         site.login();
       }
@@ -264,7 +270,6 @@
   $(window).resize(function() {
     site.backgroundScroll(myScroll.y);
     site.logoScroll(myScroll.y);
-    site.toggleScroll(myScroll.y);
   });
 
 
