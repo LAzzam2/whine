@@ -22,7 +22,8 @@
 
       setTimeout(function(){
         $('#next').click();
-      }, 1)
+        site.check();
+      }, 300)
 
       function updatePosition() {
         $('.drop').mouseout();
@@ -44,9 +45,16 @@
       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     },
     auth: function(){
-      $.getJSON('/auth',function(json){
-          site.user = json;              
+      var userRequest = $.getJSON('/auth',function(json){
+          site.user = json;   
       });  
+    },
+    check: function(){
+      console.log(site.user['loggedIn']);
+      if(site.user['loggedIn'] == true){
+        $('#user').addClass('loggedIn');
+        $('#user .name').html(site.user['name']);
+      }
     },
     logoScroll: function(distance){
       var topLimit      = window.innerHeight/2;
@@ -252,7 +260,7 @@
     like: function(){
       console.log(site.user['loggedIn']);
       if(site.user['loggedIn'] == true){
-        console.log('thanks for voting!');
+        alert('Thanks for voting!');
       }else{
         site.login();
       }
