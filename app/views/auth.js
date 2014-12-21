@@ -4,6 +4,12 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 
 var authRouter = express.Router();
 
+authRouter.route('/').get(function(req, res) {
+    res.json({
+        loggedIn: req.user ? true : false
+    });
+});
+
 authRouter.route('/twitter').get(passport.authenticate('twitter'));
 
 authRouter.route('/twitter/callback').get(
