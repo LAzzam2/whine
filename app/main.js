@@ -96,7 +96,7 @@ if (process.env.LIMIT === 'true') {
 app.use(cookieParser());
 app.use(session({
   name: 'whine.cookie',
-  secret: process.env.EXPRESS_SESSION_SECRET || uuid.v4(),
+  secret: process.env.EXPRESS_SESSION_SECRET || '6849c2e4-a112-4499-9838-450106cdfefc',
   resave: true,
   saveUninitialized: false,
   cookie: {

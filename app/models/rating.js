@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 var random = require('mongoose-random');
 
-var WhineRatingSchema = nextuw mongoose.Schema({
-    whineId: {type: mongoose.Types.ObjectId, index: true},
-    userId: {type: mongoose.Types.ObjectId, index: true},
-    rating: {type: int}
+var WhineRatingSchema = new mongoose.Schema({
+    whineId: {type: mongoose.Schema.ObjectId, index: true},
+    userId: {type: String, index: true},
+    rating: {type: Number}
 });
 
 WhineRating = mongoose.model('WhineRating', WhineRatingSchema);
