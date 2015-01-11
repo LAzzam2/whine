@@ -5,10 +5,11 @@ var allowedProperties = [
     'text',
     'submitted',
     'author',
+    'rating',
 ];
 
 exports.build = function(whine) {
-    result = whine.toObject();
+    result = whine.toJSON();
     return _.pick(result, function(value, key) {
         return _.contains(allowedProperties, key);
     });
