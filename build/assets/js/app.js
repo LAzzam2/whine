@@ -72,11 +72,12 @@ angular.module('whine', ['famous.angular', 'restangular'])
           whineService.random(limit, function(whines) {
               $scope.whineList = whines;
               $scope.currentWhine = _.first(whines);
+              $('#whine>button').css('pointer-events','auto');
+              $('#whine').animate({
+                opacity: 1
+              })
           });
-        $('#whine>button').css('pointer-events','auto');
-          $('#whine').animate({
-            opacity: 1
-          })
+          
         })
         
     };
