@@ -134,12 +134,16 @@
       });
     },
     postWhine: function(){
+      author = $('#postWhine .name').val();
+      if($('#postWhine .name').val().length <= 0){
+        author = null;
+      }
       $.ajax({
           url: 'api/whines',
           type: 'post',
           data: JSON.stringify({
               text: ''+$('textarea').val()+'',
-              author: ''+$('#postWhine .name').val()+''
+              author: ''+author+''
           }),
           headers: {
               "Content-Type": 'application/json',
