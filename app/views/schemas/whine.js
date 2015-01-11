@@ -13,8 +13,9 @@ module.exports = {
     },
     "author": {
       "id": "#author",
-      "type": "string",
-      "additionalProperties": false
+      "type": ["string", "null"],
+      "additionalProperties": false,
+      "minLength": 1,
     },
     "loc": {
       "id": "#loc",

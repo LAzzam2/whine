@@ -55,7 +55,9 @@ whinesRouter.route('/')
             compact_whitespace: true
         };
         text = htmlStrip(text, htmlStripOptions);
-        author = htmlStrip(author, htmlStripOptions);
+        if (author) {
+            author = htmlStrip(author, htmlStripOptions);
+        }
         // set the users ip
         data.ip = req.ip;
         // create the whine with the data
