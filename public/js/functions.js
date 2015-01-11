@@ -139,7 +139,7 @@
           type: 'post',
           data: JSON.stringify({
               text: ''+$('textarea').val()+'',
-              author: ''+$('.name').val()+''
+              author: ''+$('#postWhine .name').val()+''
           }),
           headers: {
               "Content-Type": 'application/json',
@@ -177,9 +177,8 @@
       $('textarea').on('focus', function(){
       });
       $('textarea').on('blur', function(){
-        
-      sections.width(window.innerWidth);
-      sections.height(window.innerHeight);
+        // sections.width(window.innerWidth);
+        // sections.height(window.innerHeight);
       });
 
       $('.likes').on('click', function(){

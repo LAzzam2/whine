@@ -64,10 +64,20 @@ angular.module('whine', ['famous.angular', 'restangular'])
      * gets random whines
      */
     $scope.getRandomWhines = function() {
-        var limit = 10;
-        whineService.random(limit, function(whines) {
-            $scope.whineList = whines;
-            $scope.currentWhine = _.first(whines);
-        });
+        $('#whine>button').css('pointer-events','none');
+        $("#whine").animate({
+          opacity: 0
+        }, function(){
+          var limit = 10;
+          whineService.random(limit, function(whines) {
+              $scope.whineList = whines;
+              $scope.currentWhine = _.first(whines);
+          });
+        $('#whine>button').css('pointer-events','auto');
+          $('#whine').animate({
+            opacity: 1
+          })
+        })
+        
     };
 }]);
