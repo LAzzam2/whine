@@ -30,7 +30,7 @@ exports.updateRating = function (whineId, userId, rating, callback) {
 
 exports.getRating = function (whineId, userId, callback) {
     WhineRating.findOne({
-        whineId: whineId,
+        whine: whineId,
         userId: userId
     }).exec(callback);
 };
@@ -40,8 +40,8 @@ exports.getAggregateRating = function (whineIds, callback) {
         return new mongoose.Types.ObjectId(id);
     });
     WhineRating.aggregate([
-        {$match: {whineId: {$in: idObjects }}},
-        {$group: {_id: "$whineId", rating: {$sum: "$rating"}}}
+        {$match: {whine: {$in: idObjects }}},
+        {$group: {_id: "$whine", rating: {$sum: "$rating"}}}
     ], function(err, res) {
         callback(err, res);
     });
