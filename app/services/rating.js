@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var mongoose = require('mongoose');
 var WhineRating = require('../models/rating');
 
@@ -34,10 +35,13 @@ exports.getRating = function (whineId, userId, callback) {
     }).exec(callback);
 };
 
-exports.getAggregateRating = function (whineId, callback) {
+exports.getAggregateRating = function (whineIds, callback) {
+    idObjects = _.map(whineIds, function(id) {
+        return new mongoose.Types.ObjectId(id);
+    });
     WhineRating.aggregate([
-        {$match: {whineId: new mongoose.Types.ObjectId(whineId)}},
-        {$group: {_id: null, rating: {$sum: "$rating"}}}
+        {$match: {whineId: {$in: idObjects }}},
+        {$group: {_id: "$whineId", rating: {$sum: "$rating"}}}
     ], function(err, res) {
         callback(err, res);
     });

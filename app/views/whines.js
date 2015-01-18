@@ -98,8 +98,8 @@ whinesRouter.route('/near')
     // get whines nearby
     .get(function(req, res) {
         // query parameters
-        lat = Number(req.query.lat)
-        lng = Number(req.query.lng)
+        lat = Number(req.query.lat);
+        lng = Number(req.query.lng);
         limit = Math.min(req.query.limit || 10, 30);
         // get the whines
         whineService.near(lat, lng, limit, function(err, whines) {

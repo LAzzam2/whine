@@ -13,6 +13,12 @@ var WhineSchema = new mongoose.Schema({
 
 WhineSchema.plugin(random);
 
+WhineSchema.virtual('rating').get(function() {
+    return this._rating || 0;
+});
+
+WhineSchema.set('toJSON', { virtual: true });
+
 Whine = mongoose.model('Whine', WhineSchema);
 
 module.exports = Whine;

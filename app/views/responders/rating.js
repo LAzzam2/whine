@@ -5,7 +5,7 @@ var allowedProperties = [
 ];
 
 exports.build = function(rating) {
-    result = rating.toObject();
+    result = rating.toJSON();
     return _.pick(result, function(value, key) {
         return _.contains(allowedProperties, key);
     });
