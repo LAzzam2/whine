@@ -147,7 +147,7 @@
         <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
             <h3 class="author">{{ currentWhine.author }}</h3>
             <div class="likes">
-              <h3>23 likes</h3>
+              <h3>{{ currentWhine.rating }} likes</h3>
             </div>
             <h2>{{ currentWhine.text }}</h2>
             <button id="next" data-ng-click="getRandomWhines()">Next Whine</button>

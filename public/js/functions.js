@@ -114,6 +114,8 @@
       $.getJSON( "api/whines/random", function( data ) {
         whine = data.text;
         author = data.author;
+        id = data[0]._id;
+        console.log(id);
           $('#whine>h2').html(whine);
           if(author){
             $('#whine>h3').remove();
@@ -190,7 +192,7 @@
       });
       $('#sections, .close').on('click', function(){
         if($('body').hasClass('login')){
-          site.like();
+          site.login();
         }
       });
     },
@@ -267,12 +269,28 @@
       }
     },
     like: function(){
-      console.log(site.user[1]);
       if(site.user[1] == true){
-        alert("Thanks for voting! Loljk the voting isn't working yet. Once it is... shits getting real");
+        console.log(id);
+        $.ajax({
+          url: 'api/whines/'+id+'/rate',
+          type: 'put',
+          data: JSON.stringify({
+              pattern: 'up',
+          }),
+          headers: {
+              "Content-Type": 'application/json',
+          },
+          dataType: 'json',
+          success: function (data) {
+              site.successLike();
+          }
+        });alert("Thanks for voting! Loljk the voting isn't working yet. Once it is... shits getting real");
       }else{
         site.login();
       }
+    },
+    successLink: function(){
+      alert('FUCK!');
     },
   }
 
