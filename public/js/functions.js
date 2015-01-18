@@ -200,7 +200,7 @@
         opacity: '0'
       }, 1000, function(){
         $('form').height(0);
-        $('.wrap h1').html('Thanks for whining here.');
+        $('.wrap h1').html('Thanks... Hang in there bruh...');
         $('.wrap h1').css('text-align','center');
         $('.wrap h1').animate({opacity: '1'}, 1000);
       });
