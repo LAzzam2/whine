@@ -146,7 +146,7 @@
         <div class="bg"></div>
         <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
             <h3 class="author">{{ currentWhine.author }}</h3>
-            <div class="likes">
+            <div class="likes" data-id="{{ currentWhine._id }}">
               <h3>{{ currentWhine.rating }} likes</h3>
             </div>
             <h2>{{ currentWhine.text }}</h2>

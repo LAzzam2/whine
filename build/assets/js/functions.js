@@ -110,31 +110,6 @@
         });
       }
     },
-    pullRandomWhine: function(){
-      $.getJSON( "api/whines/random", function( data ) {
-        whine = data.text;
-        author = data.author;
-        id = data[0]._id;
-        console.log(id);
-          $('#whine>h2').html(whine);
-          if(author){
-            $('#whine>h3').remove();
-            $('#whine').prepend('<h3></h3>')
-            $('#whine>h3').html(author);
-          }
-          $('#whine').fadeIn();
-      });
-    },
-    pullWhineGroup: function(page){
-      $.getJSON( "api/whines?perPage=5&page="+page+"", function( data ) {
-        window.location.hash = page;
-          $('#whines>ul').empty();
-          $.each(data, function( index, value ) {
-          $('#whines>ul').append('<li><span>by: '+value.author+'</span> '+value.text+'</li>');
-          $('#whines').fadeIn();
-        });
-      });
-    },
     postWhine: function(){
       author = $('#postWhine .name').val();
       if($('#postWhine .name').val().length <= 0){
@@ -163,13 +138,7 @@
           site.postWhine();
         }
       });
-      $('#whine button').on('click', function(){
-        site.pullRandomWhine();
-      });
-      $('#whines button').on('click', function(){
-        var whinePage = parseInt(window.location.hash.replace('#', '')) +1;
-        site.pullWhineGroup(whinePage);
-      });
+     
       $('#d1').on('click', function(){
         myScroll.scrollTo('',-window.innerHeight, 1000);
       });
@@ -188,7 +157,7 @@
       });
 
       $('.likes').on('click', function(){
-        site.like();
+        site.like($(this).attr('data-id'));
       });
       $('#sections, .close').on('click', function(){
         if($('body').hasClass('login')){
@@ -268,14 +237,15 @@
         $('#login').animate({opacity: 0});
       }
     },
-    like: function(){
+    like: function(id){
+      whineID = id;
+      console.log(whineID);
       if(site.user[1] == true){
-        console.log(id);
         $.ajax({
-          url: 'api/whines/'+id+'/rate',
+          url: 'api/whine/'+whineID+'/rate',
           type: 'put',
           data: JSON.stringify({
-              pattern: 'up',
+              rating: 'up',
           }),
           headers: {
               "Content-Type": 'application/json',
@@ -284,13 +254,13 @@
           success: function (data) {
               site.successLike();
           }
-        });alert("Thanks for voting! Loljk the voting isn't working yet. Once it is... shits getting real");
+        });
       }else{
         site.login();
       }
     },
-    successLink: function(){
-      alert('FUCK!');
+    successLike: function(){
+      console.log('upvoted: '+whineID+'');
     },
   }
 
