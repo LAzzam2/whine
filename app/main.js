@@ -12,6 +12,7 @@ var uuid = require('node-uuid');
 var whinesRouter = require('./views/whines');
 var ratingRouter = require('./views/rating');
 var authRouter = require('./views/auth');
+var twitterJob = require('./jobs/twitter');
 
 
 var app = express();
@@ -126,6 +127,13 @@ app.use('/api/whines', whinesRouter);
 app.use('/api/whine', ratingRouter);
 app.use('/auth', authRouter);
 
+
+/*
+ * Start the twitter job if applicable
+ */
+if (process.env.NODE_ENV === 'production') {
+    twitterJob.job.start();
+}
 /*
  * Configure app port and run
  */

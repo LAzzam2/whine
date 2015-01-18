@@ -1,5 +1,8 @@
 var _ = require('underscore');
+var mongoose = require('mongoose');
+var moment = require('moment');
 var Whine = require('../models/whine');
+var WhineRating = require('../models/rating');
 var ratingService = require('./rating')
 
 exports.read = function (id, callback) {
@@ -51,4 +54,39 @@ populateRating = function (callback, err, whines) {
         });
         callback(null, whines);
     });
-}
+};
+
+exports.mostPopular = function (callback) {
+    var match = {
+        posted: false
+    };
+    WhineRating.aggregate([
+        {$match: match},
+        {$group: {_id: "$whineId", rating: {$sum: "$rating"}}},
+        {$match: {rating: {$gte: 5}}},
+        {$sort: {rating: -1}},
+        {$limit: 1}
+    ], function(err, res) {
+        callback(err, res);
+    });
+};
+
+/*
+ * Helper function to mark various models as 'posted'
+ */
+var markPosted = function(idField, model, whineId, multi, callback) {
+    var match = {};
+    match[idField] = new mongoose.Types.ObjectId(whineId);
+    var update = {
+        posted: true
+    }
+    model.update(match, update, {multi: multi}, callback);
+};
+
+exports.markWhinePosted = function (whineId, callback) {
+    markPosted("_id", Whine, whineId, false, callback);
+};
+
+exports.markRatingsPosted = function (whineId, callback) {
+    markPosted("whineId", WhineRating, whineId, true, callback);
+};

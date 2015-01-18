@@ -19,7 +19,7 @@ exports.updateRating = function (whineId, userId, rating, callback) {
         }
         WhineRating.update({
             userId: userId,
-            whineId: whineId
+            whine: whineId
         }, {
             $set: {
                 rating: ratingMap[rating]

@@ -8,7 +8,8 @@ var WhineSchema = new mongoose.Schema({
     ip: {type: String, index: true},
     loc: {type: [Number], index: '2dsphere'},
     flagCount: {type: Number, default: 0},
-    tags: {type: [String], index: true}
+    tags: {type: [String], index: true},
+    posted: {type: Boolean, index: true, default: false}
 });
 
 WhineSchema.plugin(random);

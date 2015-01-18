@@ -27,8 +27,8 @@ authRouter.route('/twitter/callback').get(
 
 var host = process.env.HOST || "localhost:5555"
 passport.use(new TwitterStrategy({
-        consumerKey: process.env.TWITTER_API_KEY,
-        consumerSecret: process.env.TWITTER_API_SECRET,
+        consumerKey: process.env.TWITTER_AUTH_CONSUMER_KEY,
+        consumerSecret: process.env.TWITTER_AUTH_CONSUMER_SECRET,
         callbackURL: "http://" + host + "/auth/twitter/callback"
     },
     function(token, tokenSecret, profile, done) {
