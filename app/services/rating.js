@@ -19,7 +19,8 @@ exports.updateRating = function (whineId, userId, rating, callback) {
         }
         WhineRating.update({
             userId: userId,
-            whine: whineId
+            whine: whineId,
+            posted: whine.posted,
         }, {
             $set: {
                 rating: ratingMap[rating]
@@ -42,7 +43,5 @@ exports.getAggregateRating = function (whineIds, callback) {
     WhineRating.aggregate([
         {$match: {whine: {$in: idObjects }}},
         {$group: {_id: "$whine", rating: {$sum: "$rating"}}}
-    ], function(err, res) {
-        callback(err, res);
-    });
+    ], callback);
 };
