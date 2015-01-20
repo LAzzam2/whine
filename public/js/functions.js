@@ -155,8 +155,8 @@
         // sections.height(window.innerHeight);
       });
 
-      $('.likes').on('click', function(){
-        site.like($(this).attr('data-id'));
+      $('.likes button, .likes h3').on('click', function(){
+        site.like($('.likes').attr('data-id'), $(this));
       });
       $('#sections, .close').on('click', function(){
         if($('body').hasClass('login')){
@@ -236,30 +236,45 @@
         $('#login').animate({opacity: 0});
       }
     },
-    like: function(id){
+    like: function(id, vote){
       whineID = id;
-      console.log(whineID);
+      voteType = vote.attr('data-vote');
+      console.log(whineID, voteType);
       if(site.user[1] == true){
         $.ajax({
           url: 'api/whine/'+whineID+'/rate',
           type: 'put',
           data: JSON.stringify({
-              rating: 'up',
+              rating: ''+voteType+'',
           }),
           headers: {
               "Content-Type": 'application/json',
           },
           dataType: 'json',
           success: function (data) {
-              site.successLike();
+              site.successLike(voteType);
           }
         });
       }else{
         site.login();
       }
     },
-    successLike: function(){
-      console.log('upvoted: '+whineID+'');
+    successLike: function(voteType){
+      currentLike = parseInt($('.likes>h3>span').html());
+      if(voteType === 'down'){
+        --currentLike;
+      }
+      if(voteType === 'up'){
+        ++currentLike;
+      }
+      if(voteType === 'none'){
+        currentLike;
+      }
+      $('.likes>h3>span').html(currentLike);
+      $('button').css('pointer-events','auto');
+      $('button>span').removeClass('currentLike');
+      $('.'+voteType+'').css('pointer-events','none');
+      $('.'+voteType+'>span').addClass('currentLike');
     },
   }
 

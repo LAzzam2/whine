@@ -627,13 +627,12 @@ li:last-child  {
 		height: 13px;
 		float: left;
 		margin: 0px 8px;
-		opacity: .2;
 		@include transition(opacity, 250ms);
 	}
-	#down {
+	.down {
 		margin-left: 10px;
 	}
-	#up, #down {
+	.up, .down {
 		span {
 			display: block;
 			position: absolute;
@@ -650,11 +649,15 @@ li:last-child  {
 
 			-webkit-backface-visibility: hidden;
 		}
+		span.currentLike {
+			opacity: 1;
+			pointer-events: none;
+		}
 		span:hover {
 			opacity: 1;
 		}
 	}
-	#down {
+	.down {
 		span {
 			margin-top:2px;
 			width: 0;
@@ -663,11 +666,6 @@ li:last-child  {
 			border-width: 12px 7.5px 0 7.5px;
 			border-color: white transparent transparent transparent;
 		}
-	}
-}
-.likes:hover {
-	button {
-		opacity: 1;
 	}
 }
 
