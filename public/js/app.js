@@ -70,6 +70,10 @@ angular.module('whine', ['famous.angular', 'restangular'])
         }, function(){
           var limit = 10;
           whineService.random(limit, function(whines) {
+
+              $('button').css('pointer-events','auto');
+              $('button>span').removeClass('currentLike');
+              
               $scope.whineList = whines;
               $scope.currentWhine = _.first(whines);
               $('#whine>button').css('pointer-events','auto');
