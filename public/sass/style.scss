@@ -626,7 +626,7 @@ li:last-child  {
 		border: none; outline: none;
 		height: 13px;
 		float: left;
-		margin: 0px 10px;
+		margin: 0px 8px;
 		opacity: .2;
 		@include transition(opacity, 250ms);
 	}
@@ -640,12 +640,12 @@ li:last-child  {
 			top: 50%; left: 50%;
 			@include transform(translate(-50%,-50%) scale(.8));
 			@include transition(opacity, 250ms);
-			width: 0; 
-			height: 0; 
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
-			
-			border-bottom: 13px solid white;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 7.5px 12px 7.5px;
+			border-color: transparent transparent white transparent;
+			margin-top: 1px;
 			opacity: .4;
 
 			-webkit-backface-visibility: hidden;
@@ -656,7 +656,12 @@ li:last-child  {
 	}
 	#down {
 		span {
-			@include transform(rotate(180deg) translate(50%,50%) scale(.8));
+			margin-top:2px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 12px 7.5px 0 7.5px;
+			border-color: white transparent transparent transparent;
 		}
 	}
 }
