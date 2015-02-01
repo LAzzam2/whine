@@ -14,6 +14,7 @@ var config = {
 };
 
 var tweetPopularWhine = function() {
+    winston.info("Starting twitter job.");
     WhineService.mostPopular(function(err, result) {
         if (err) {
             winston.error(err);
@@ -71,4 +72,4 @@ var markWhinePosted = function(whineId) {
     });
 };
 
-exports.job = new CronJob('*/10 * * * *', tweetPopularWhine);
+exports.job = new CronJob('*/5 * * * *', tweetPopularWhine);
