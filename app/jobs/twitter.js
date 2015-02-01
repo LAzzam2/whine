@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var sprintf = require('sprintf-js').sprintf;
 var winston = require('winston');
 var async = require('async');
 var CronJob = require('cron').CronJob;
@@ -15,22 +16,24 @@ var config = {
 var tweetPopularWhine = function() {
     WhineService.mostPopular(function(err, result) {
         if (err) {
-            winston.log(err);
+            winston.error(err);
             return;
         }
         if (!result.length) {
             return;
         }
         var whineId = _.first(result)._id;
+        winston.info(sprintf("Looking for whine with id %s", whineId));
         WhineService.read(whineId, function(err, whine) {
             if (err) {
-                winston.log(err);
+                winston.error(err);
                 return;
             }
             if (!whine) {
-                winston.log("Whine not found");
+                winston.error("Whine not found");
                 return;
             }
+            winston.info(sprintf("Found whine %s", whine.toJSON()));
             var twitter = new Twitter(config);
             var params = {
                 status: whine.text
