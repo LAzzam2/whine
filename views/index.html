@@ -143,9 +143,9 @@
       </div>
     </li>
     <li>
-      <div id="browseWhines" class="section">
+      <div id="browseWhines" class="section" data-ng-controller="HomeCtrl">
         <div class="bg"></div>
-        <div id="whine" class="wrap" data-ng-controller="HomeCtrl">
+        <div id="whine" class="wrap">
             <h3 class="author">{{ currentWhine.author }}</h3>
             <div class="likes" data-id="{{ currentWhine._id }}">
               <button class="down" data-vote="down"><span></span></button>
@@ -153,12 +153,13 @@
               <button class="up" data-vote="up"><span></span></button>
             </div>
             <h2>{{ currentWhine.text }}</h2>
-              <button id="next" data-ng-click="getRandomWhines()">Next Whine</button>
+            
         </div>
          <!-- <div id="whines" class="wrap hide">
           <ul></ul>
           <button>Next Whines</button>
         </div> -->
+        <button id="next" data-ng-click="getRandomWhines()">Next Whine</button>
         <footer>
           <p><small>&copy; Created by some boss ass peeps.</small></p>
         </footer>

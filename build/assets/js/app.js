@@ -64,7 +64,7 @@ angular.module('whine', ['famous.angular', 'restangular'])
      * gets random whines
      */
     $scope.getRandomWhines = function() {
-        $('#whine>button').css('pointer-events','none');
+        $('#next').css('pointer-events','none');
         $("#whine").animate({
           opacity: 0
         }, function(){
@@ -76,13 +76,19 @@ angular.module('whine', ['famous.angular', 'restangular'])
               
               $scope.whineList = whines;
               $scope.currentWhine = _.first(whines);
-              $('#whine>button').css('pointer-events','auto');
+              $('#next').css('pointer-events','auto');
               $('#whine').animate({
                 opacity: 1
-              })
+              }, function(){
+                whineID = $('.likes').attr('data-id');
+                console.log(whineID);
+
+                $.get( 'api/whine/'+whineID+'/rate', function( data ) {
+                  console.log(data);
+                });
+              });
           });
           
-        })
-        
+        });
     };
 }]);
