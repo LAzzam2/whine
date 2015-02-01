@@ -27,6 +27,10 @@ var tweetPopularWhine = function() {
                 winston.log(err);
                 return;
             }
+            if (!whine) {
+                winston.log("Whine not found");
+                return;
+            }
             var twitter = new Twitter(config);
             var params = {
                 status: whine.text
