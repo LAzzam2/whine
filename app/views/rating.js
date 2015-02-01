@@ -18,8 +18,14 @@ ratingRouter.route('/:whineId/rate')
         var userId = req.user.id;
         //otherwise attempt to get their rating
         ratingService.getRating(whineId, userId, function(err, value) {
-            rating = ratingResponder.build(value);
-            res.json(rating);
+            if (value) {
+                rating = ratingResponder.build(value);
+                res.json(rating);
+            } else {
+                res.json({
+                    rating: 0
+                });
+            }
         });
     })
     .put(function(req, res) {

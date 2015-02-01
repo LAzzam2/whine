@@ -22,6 +22,7 @@ var tweetPopularWhine = function() {
         if (!result.length) {
             return;
         }
+        winston.info(sprintf("Fetched Whine %s", result));
         var whineId = _.first(result)._id;
         winston.info(sprintf("Looking for whine with id %s", whineId));
         WhineService.read(whineId, function(err, whine) {
@@ -70,4 +71,4 @@ var markWhinePosted = function(whineId) {
     });
 };
 
-exports.job = new CronJob('0 */2 * * *', tweetPopularWhine);
+exports.job = new CronJob('*/10 * * * *', tweetPopularWhine);
