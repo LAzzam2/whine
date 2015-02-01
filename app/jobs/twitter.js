@@ -4,6 +4,7 @@ var winston = require('winston');
 var async = require('async');
 var CronJob = require('cron').CronJob;
 var Twitter = require('twitter');
+var util = require('util';)
 var WhineService = require('../services/whine');
 
 var config = {
@@ -23,6 +24,7 @@ var tweetPopularWhine = function() {
         if (!result.length) {
             return;
         }
+        winston.info(util.inspect(result, {showHidden: false, depth: 2}));
         winston.info(sprintf("Fetched Whine %s", result));
         var whineId = _.first(result)._id;
         winston.info(sprintf("Looking for whine with id %s", whineId));
@@ -72,4 +74,4 @@ var markWhinePosted = function(whineId) {
     });
 };
 
-exports.job = new CronJob('*/5 * * * *', tweetPopularWhine);
+exports.job = new CronJob('* * * * *', tweetPopularWhine);
