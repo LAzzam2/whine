@@ -14,11 +14,19 @@ var config = {
 
 var tweetPopularWhine = function() {
     WhineService.mostPopular(function(err, result) {
+        if (err) {
+            winston.log(err);
+            return;
+        }
         if (!result.length) {
             return;
         }
         var whineId = _.first(result)._id;
         WhineService.read(whineId, function(err, whine) {
+            if (err) {
+                winston.log(err);
+                return;
+            }
             var twitter = new Twitter(config);
             var params = {
                 status: whine.text
