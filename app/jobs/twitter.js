@@ -74,4 +74,4 @@ var markWhinePosted = function(whineId) {
     });
 };
 
-exports.job = new CronJob('* * * * *', tweetPopularWhine);
+exports.job = new CronJob('* */2 * * *', tweetPopularWhine);
