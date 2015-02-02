@@ -62,7 +62,7 @@ exports.mostPopular = function (callback) {
     };
     WhineRating.aggregate([
         {$match: match},
-        {$group: {_id: "$whineId", rating: {$sum: "$rating"}}},
+        {$group: {_id: "$whine", rating: {$sum: "$rating"}}},
         {$match: {rating: {$gte: 5}}},
         {$sort: {rating: -1}},
         {$limit: 1}
