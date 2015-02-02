@@ -80,11 +80,23 @@ angular.module('whine', ['famous.angular', 'restangular'])
               $('#whine').animate({
                 opacity: 1
               }, function(){
-                whineID = $('.likes').attr('data-id');
-
-                $.get( 'api/whine/'+whineID+'/rate', function( data ) {
-                  
-                });
+                if($('.name').html().length > 0){
+                  whineID = $('.likes').attr('data-id');
+                  $.get( 'api/whine/'+whineID+'/rate', function( data ) {
+                    console.log(data);
+                    if(data.rating > 0){
+                      $('button>span').removeClass('currentLike');
+                      $('.up').css('pointer-events','none');
+                      $('.up>span').addClass('currentLike');
+                    }else if (data.rating < 0){
+                      $('button>span').removeClass('currentLike');
+                      $('.down').css('pointer-events','none');
+                      $('.down>span').addClass('currentLike');
+                    }else {
+                      $('button>span').removeClass('currentLike');
+                    }
+                  });
+                }
               });
           });
           

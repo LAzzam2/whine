@@ -22,7 +22,7 @@
 
       setTimeout(function(){
         $('#next').click();
-      }, 300)
+      }, 300);
 
       function updatePosition() {
         $('.drop').mouseout();
@@ -261,13 +261,26 @@
     successLike: function(voteType){
       currentLike = parseInt($('.likes>h3>span').html());
       if(voteType === 'down'){
+        if($('.currentLike').parent().hasClass('up')){
+          --currentLike;
+        }
         --currentLike;
       }
       if(voteType === 'up'){
+        if($('.currentLike').parent().hasClass('down')){
+          ++currentLike;
+        }
         ++currentLike;
       }
       if(voteType === 'none'){
-        currentLike;
+        if($('.currentLike').parent().hasClass('down')){
+          ++currentLike;
+        }else if($('.currentLike').parent().hasClass('up')){
+          --currentLike;
+        }else {
+          return;
+        }
+        
       }
       $('.likes>h3>span').html(currentLike);
       $('button').css('pointer-events','auto');
