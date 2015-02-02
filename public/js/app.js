@@ -81,10 +81,9 @@ angular.module('whine', ['famous.angular', 'restangular'])
                 opacity: 1
               }, function(){
                 whineID = $('.likes').attr('data-id');
-                console.log(whineID);
 
                 $.get( 'api/whine/'+whineID+'/rate', function( data ) {
-                  console.log(data);
+                  
                 });
               });
           });

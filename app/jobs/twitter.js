@@ -4,7 +4,7 @@ var winston = require('winston');
 var async = require('async');
 var CronJob = require('cron').CronJob;
 var Twitter = require('twitter');
-var util = require('util';)
+var util = require('util');
 var WhineService = require('../services/whine');
 
 var config = {

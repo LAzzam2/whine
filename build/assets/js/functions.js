@@ -239,7 +239,6 @@
     like: function(id, vote){
       whineID = id;
       voteType = vote.attr('data-vote');
-      console.log(whineID, voteType);
       if(site.user[1] == true){
         $.ajax({
           url: 'api/whine/'+whineID+'/rate',
