@@ -79,7 +79,9 @@ angular.module('whine', ['famous.angular', 'restangular'])
               $('#next').css('pointer-events','auto');
               $('#whine').animate({
                 opacity: 1
-              }, function(){
+              });
+
+              setTimeout(function(){
                 if($('.name').html().length > 0){
                   whineID = $('.likes').attr('data-id');
                   $.get( 'api/whine/'+whineID+'/rate', function( data ) {
@@ -97,7 +99,8 @@ angular.module('whine', ['famous.angular', 'restangular'])
                     }
                   });
                 }
-              });
+              }, 100);
+              
           });
           
         });
