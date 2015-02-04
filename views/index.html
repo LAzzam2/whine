@@ -113,8 +113,12 @@
   </a>
    
   <div id="login">
-    <div class="close">X</div>
-      Please <a href="auth/twitter">login</a> and verify your identity using twitter to vote.
+    <div class="wrap">
+      <div class="close">X</div>
+      <h1>ooops...</h1>
+      <p>You need to be logged in to twitter to vote.</p>
+      <button id="loginBtn"><a href="auth/twitter">Login</a></button>
+    </div>
   </div>
 
   <div id="sections" class="sections"> 
@@ -136,7 +140,7 @@
           <form autocomplete="off">
               <input class="name" name="name" placeholder="Name" />
               <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
-              <input type="submit" value="submit">
+              <button id="submit">Submit</button>
           </form>
         </div>
         <div id="d2" class="drop"><p>Browse complaints</p><img src="assets/img/arrow.svg" alt="see"/></div>

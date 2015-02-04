@@ -108,7 +108,7 @@ pre, code, kbd, samp {font-family: monospace, sans-serif;}
 .clickable,
 label, 
 input[type=button], 
-input[type=submit], 
+#submit, 
 input[type=file], 
 button {cursor: pointer;}
 
@@ -159,8 +159,8 @@ ins {background-color: #fcd700; color: #000; text-decoration: none;}
 mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
 
 /* Mozilla dosen't style place holders by default */
-input:-moz-placeholder { color:#a9a9a9; }
-textarea:-moz-placeholder { color:#a9a9a9; }
+input:-moz-placeholder { color:white; }
+textarea:-moz-placeholder { color:white; }
 
 @mixin center($n1, $n2){
 	transform: translate($n1,$n2);
@@ -441,7 +441,7 @@ li:last-child  {
 			@include transition(all, 250ms);
 			color: white;
 			white-space: nowrap;
-			font-weight: 600;
+			font-weight: 100;
 			text-transform: uppercase;
 			opacity: 0;
 		}
@@ -449,7 +449,7 @@ li:last-child  {
 	.drop:hover{
 		opacity: .8;
 		p {
-			@include center(-50%,-175%);
+			@include center(-50%,-155%);
 			opacity: 1 !important;
 		}
 	}
@@ -474,18 +474,19 @@ li:last-child  {
 		h2:last-of-type {
 			margin: 10px 0px 0px 0px;
 		}
-		input[type=submit] {
+		#submit {
 			@include transition(all, 250ms);
 			background: none;
 			border: none;
-			border: 1px solid rgba(255,255,255,.4);
-			background-color: rgba(255,255,255,.1);
-			padding: 5px 0px;
-			width: 150px;
+			border: 1px solid rgba(255,255,255,1);
+			background-color: rgba(255,255,255,0);
+			padding: 5px 20px 5px 40px;
+			width: 125px;
 			margin-top: 25px;
 			color: white;
 			box-sizing: border-box;
 			font-weight: 200;
+			position: relative;
 		}
 	}
 	button#next {
@@ -495,21 +496,35 @@ li:last-child  {
 		@include transition(all, 250ms);
 		background: none;
 		border: none;
-		outline: 1px solid rgba(255,255,255,.4);
-		background-color: rgba(255,255,255,.1);
-		padding: 5px 0px;
-		width: 150px;
+		outline: 1px solid white;
+		background-color: rgba(255,255,255,0);
+		padding: 5px 20px 5px 45px;
 		margin-top: 25px;
 		color: white;
 		border-radius: 2px;
 		box-sizing: border-box;
 	}
-	button#next:hover, input[type=submit]:hover {
+	button#next:before, #submit:before {
+		content:'';
+		height: 100%; width: 25px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background: url('../img/shuffle.svg')no-repeat center center white;
+		background-size: 75%;
+		outline: 1px solid white;
+	}
+	#submit:before {
+		background: url('../img/submit.svg')no-repeat center center white;
+		background-size: 75%;
+	}
+	button#next:hover, #submit:hover {
 		color: black;
-		background-color: rgba(255,255,255,.8);
+		background-color: rgba(255,255,255,1);
 	}
 	form {
 		text-align: center;
+		height: inherit !important;
 		input, textarea {
 			width: 100%;
 			margin-top: 25px;
@@ -520,13 +535,12 @@ li:last-child  {
 		}
 		input[name=name]{
 			border: 1px solid white;
-			max-width: 30%;
 			padding: 5px;
 			float: left;
 			font-weight: bold;
 		}
 		textarea {
-			height: 200px;
+			height: 150px;
 			margin-top: 15px;
 			border: 1px solid white;
 			padding: 10px;
@@ -540,11 +554,11 @@ li:last-child  {
 			font-size: 1.2em;
 			font-weight: 100;
 		}
-		textarea::-webkit-input-placeholder  {
+		textarea::-webkit-input-placeholder, input[name=name]::-webkit-input-placeholder  {
 		  -webkit-transition: opacity 0.2s linear; 
 		}
 
-		textarea:focus::-webkit-input-placeholder  {
+		textarea:focus::-webkit-input-placeholder, input[name=name]:focus::-webkit-input-placeholder  {
 		  opacity: 0;
 		}
 	}
@@ -578,7 +592,7 @@ li:last-child  {
 			float: left;
 		}
 		.author:before {
-			content: "by: ";
+			content: "/";
 		}
 		ul {
 			li {
@@ -614,8 +628,6 @@ li:last-child  {
 	h3 {
 		float: left;
 		cursor: hand; cursor: pointer;
-	}
-	h3:first-child {
 	}
 	h3:hover {
 		color: rgba(255,255,255,1) !important;
@@ -674,22 +686,34 @@ li:last-child  {
 
 #login {
 	position: fixed;
-	top: 50%; left: 50%;
+	top: 49%; left: 49%;
 	@include center(-50%,-50%);
-	background-color: rgba(0,0,0,.9); 
-	width: 90%;
-	max-width: 500px;
+	background-color: rgba(0,0,0,.8);
+	width: 102%; height: 102%;
 	color: white;
 	text-align: center;
 	padding: 25px 0px;
 	outline: 1px solid white;
 	opacity: 0;
 	pointer-events: none;
+	.wrap {
+		position: absolute;
+		top: 50%; left: 50%;
+		@include center(-50%,-50%);
+	}
+	h1 {
+		font-weight: bold;
+		font-size: 3.5em;
+		text-transform: uppercase;
+	}
+	p {
+		margin: 5px 0px 25px 0px;
+	}
 	.close {
 		cursor: hand; cursor: pointer;
 		opacity: .4;
 		position: absolute;
-		top: 2px; right: 5px;
+		top: 0px; right: 0px;
 		@include transition(all, 250ms);
 	}
 	.close:hover {
@@ -703,7 +727,36 @@ li:last-child  {
 		padding-bottom: 5px;
 		@include transition(all, 250ms);
 	}
-	a:hover {
+	button {
+		@include transition(all, 250ms);
+		outline: 1px solid white;
+		background: none; 
+		border: none;
+		padding: 5px 0px 5px 20px;
+		color: white;
+		text-align: center;
+		width: 150px;
+		position: relative;
+		a {
+			font-weight: 100;
+		}
+	}
+	button:before {
+		content:'';
+		height: 100%; width: 25px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background: url('../img/twitter_b.svg')no-repeat center center white;
+		background-size: 75%;
+		outline: 1px solid white;
+	}
+	button:hover {
+		background-color: white;
+		color: black;	
+		a {
+			color: black
+		}
 	}
 }
 
@@ -770,6 +823,7 @@ li:last-child  {
 				font-size: 1.4em;
 			}
 			form {
+				height: auto !important;
 				textarea {
 					height: 100px;
 					border-radius: 0px;
