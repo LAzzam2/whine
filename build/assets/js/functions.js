@@ -95,7 +95,7 @@
       } 
     },
     navScroll: function(distance){
-      var topLimit      = window.innerHeight*2;
+      var topLimit      = window.innerHeight*2-10;
           distance      = -distance;
       if( distance >= topLimit){
         $('#toggle').css({
