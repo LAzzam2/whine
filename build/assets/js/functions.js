@@ -131,7 +131,7 @@
       });
     },
     clickFunc: function(){
-      $('input:submit').on('click', function( event ){
+      $('#submit').on('click', function( event ){
         event.preventDefault();
         if($('textarea').val()){
           site.postWhine();
@@ -165,11 +165,11 @@
       });
     },
     successPost: function(){
-      $('input:submit').css('pointer-events','none');
+      $('#submit').css('pointer-events','none');
       $('.wrap h1, input, form').animate({
         opacity: '0'
       }, 1000, function(){
-        $('form').height(0);
+        $('form').remove();
         $('.wrap h1').html('Thanks... Hang in there bruh...');
         $('.wrap h1').css('text-align','center');
         $('.wrap h1').animate({opacity: '1'}, 1000);
