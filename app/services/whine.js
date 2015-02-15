@@ -88,5 +88,5 @@ exports.markWhinePosted = function (whineId, callback) {
 };
 
 exports.markRatingsPosted = function (whineId, callback) {
-    markPosted("whineId", WhineRating, whineId, true, callback);
+    markPosted("whine", WhineRating, whineId, true, callback);
 };
