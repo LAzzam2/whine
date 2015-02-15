@@ -21,7 +21,7 @@
       site.user;
 
       setTimeout(function(){
-        $('#d3').click();
+        $('#next').click();
       }, 300);
 
       function updatePosition() {
