@@ -56,22 +56,24 @@ var tweetPopularWhine = function() {
 };
 
 var markWhinePosted = function(whineId) {
+    winston.info("Marking the whine as posted.")
     WhineService.markWhinePosted(whineId, function(err, num) {
         if (err) {
             winston.error(err);
             return;
         } else {
-            winston.info(num);
+            winston.info("Whine marked as posted");
         }
+        winston.info("Marking whine ratings as posted");
         WhineService.markRatingsPosted(whineId, function(err, num) {
             if (err) {
                 winston.error(err);
                 return;
             } else {
-                winston.info(num);
+                winston.info("Marked %d whineratings as posted", num);
             }
         });
     });
 };
 
-exports.job = new CronJob('* */2 * * *', tweetPopularWhine);
+exports.job = new CronJob('*/5 * * * *', tweetPopularWhine);
