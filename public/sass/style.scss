@@ -251,7 +251,7 @@ html, body, .wrapper, .sections, .section {
 }
 #toggle {
 	position: fixed;
-	width: 45px;
+	width: 80px;
 	height: 25px;
 	top: 35px;
 	left: 160px;
@@ -264,7 +264,7 @@ html, body, .wrapper, .sections, .section {
 	overflow: hidden;
 	p {
 		position: absolute;
-		top: 0; left: 40px;
+		top: 0; left: 70px;
 		color: white;
 		float: left;
 		line-height: 25px;
@@ -277,6 +277,11 @@ html, body, .wrapper, .sections, .section {
 		height: 25px;
 		width: 25px;
 		@include transition(all, 600ms);
+		opacity: .6;
+		margin-right: 5px;
+	}
+	img:hover{
+		opacity: 1;
 	}
 	.active{
 		opacity: 1;
@@ -284,7 +289,6 @@ html, body, .wrapper, .sections, .section {
 }
 #toggle:hover {
 	width: 200px;
-	opacity: 1 !important;
 }
 #login {
 	position: fixed;

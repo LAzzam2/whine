@@ -99,7 +99,7 @@
           distance      = -distance;
       if( distance >= topLimit){
         $('#toggle').css({
-          opacity: '.4',
+          opacity: '1',
           pointerEvents: 'auto'
         });
       }else{
