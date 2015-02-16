@@ -806,8 +806,8 @@ li:last-child  {
 	}
 	#toggle {
 		top: 20px;
-		left: 170px;
-		width: 45px;
+		left: 210px;
+		width: 75px;
 		@include center(-115%,0);
 		border-left: none;
 	}
@@ -847,7 +847,7 @@ li:last-child  {
 		}	
 	}
 	#toggle:hover {
-		width: 45px;
+		width: 75px;
 	}
 }
 
