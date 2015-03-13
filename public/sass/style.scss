@@ -303,6 +303,9 @@ html, body, .wrapper, .sections, .section {
 		background-color: rgba(255,255,255,.3);
 		cursor: hand; cursor: pointer;
 	}
+	a {
+		display: none;
+	}
 }
 li {
 	list-style: none;

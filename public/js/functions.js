@@ -225,6 +225,7 @@
       if(!$('body').hasClass('login')){
         $('#sections').animate({opacity: .4});
         $('#login').css('pointer-events','auto');
+        $('#login a').css('display','inline');
         $('#login').delay(150).animate({opacity: 1}, function(){
           $('body').removeClass('login');
           $('body').addClass('login');
@@ -233,7 +234,9 @@
         $('body').removeClass('login');
         $('#sections').delay(150).animate({opacity: 1});
         $('#login').css('pointer-events','none');
-        $('#login').animate({opacity: 0});
+        $('#login').animate({opacity: 0}, function(){
+          $('#login a').css('display','none');
+        });
       }
     },
     like: function(id, vote){
