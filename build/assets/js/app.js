@@ -88,7 +88,6 @@ angular.module('whine', ['famous.angular', 'restangular'])
                if($('.name').html().length > 0){
                 whineID = $scope.currentWhine._id;
                 $.get( 'api/whine/'+whineID+'/rate', function( data ) {
-                  console.log('data: '+data.rating);
                   if(data.rating > 0){
                     $('button>span').removeClass('currentLike');
                     $('.up').css('pointer-events','none');
