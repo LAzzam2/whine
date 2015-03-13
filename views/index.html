@@ -140,7 +140,7 @@
       <div id="postWhine" class="section">
         <div class="bg"></div>
         <div class="wrap">
-          <h1>Ease your mind.</h1>
+          <h1>Whine. Or don't. No one cares.</h1>
           <form autocomplete="off">
               <input class="name" name="name" placeholder="Name" />
               <textarea name="comment" form="usrform" placeholder="Whatcha got to say?"></textarea>
@@ -157,7 +157,7 @@
             <h3 class="author">{{ currentWhine.author }}</h3>
             <div class="likes" data-id="{{ currentWhine._id }}">
               <button class="down" data-vote="down"><span></span></button>
-              <h3 data-vote="none"><span>{{ currentWhine.rating }}</span> likes</h3>
+              <h3 data-vote="none" data-rating="{{ currentWhine.rating }}"><span></span> likes</h3>
               <button class="up" data-vote="up"><span></span></button>
             </div>
             <h2>{{ currentWhine.text }}</h2>

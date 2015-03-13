@@ -81,25 +81,21 @@ angular.module('whine', ['famous.angular', 'restangular'])
                 opacity: 1
               });
 
-              setTimeout(function(){
                 if($('.name').html().length > 0){
-                  whineID = $('.likes').attr('data-id');
+                  whineID = $scope.currentWhine._id;
                   $.get( 'api/whine/'+whineID+'/rate', function( data ) {
+                    $('.likes>h3>span').html(data.rating);
+                    $('button>span').removeClass('currentLike');
                     console.log(data);
                     if(data.rating > 0){
-                      $('button>span').removeClass('currentLike');
                       $('.up').css('pointer-events','none');
                       $('.up>span').addClass('currentLike');
                     }else if (data.rating < 0){
-                      $('button>span').removeClass('currentLike');
                       $('.down').css('pointer-events','none');
                       $('.down>span').addClass('currentLike');
-                    }else {
-                      $('button>span').removeClass('currentLike');
                     }
                   });
                 }
-              }, 100);
               
           });
           
