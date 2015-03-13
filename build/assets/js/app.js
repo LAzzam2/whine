@@ -76,27 +76,34 @@ angular.module('whine', ['famous.angular', 'restangular'])
               
               $scope.whineList = whines;
               $scope.currentWhine = _.first(whines);
+
+              console.log($scope.currentWhine.author);
+              if($scope.currentWhine.author === 'undefined'){
+               currentWhine.author = 'hi';
+               console.log(currentWhine.author);
+              }
+
               $('#next').css('pointer-events','auto');
               $('#whine').animate({
                 opacity: 1
               });
 
-                if($('.name').html().length > 0){
-                  whineID = $scope.currentWhine._id;
-                  $.get( 'api/whine/'+whineID+'/rate', function( data ) {
-                    $('.likes>h3>span').html(data.rating);
-                    $('button>span').removeClass('currentLike');
-                    console.log(data);
-                    if(data.rating > 0){
-                      $('.up').css('pointer-events','none');
-                      $('.up>span').addClass('currentLike');
-                    }else if (data.rating < 0){
-                      $('.down').css('pointer-events','none');
-                      $('.down>span').addClass('currentLike');
-                    }
-                  });
-                }
+              if($('.name').html().length > 0){
+                whineID = $scope.currentWhine._id;
+                $.get( 'api/whine/'+whineID+'/rate', function( data ) {
+                  $('.likes>h3>span').html(data.rating);
+                  $('button>span').removeClass('currentLike');
+                  if(data.rating > 0){
+                    $('.up').css('pointer-events','none');
+                    $('.up>span').addClass('currentLike');
+                  }else if (data.rating < 0){
+                    $('.down').css('pointer-events','none');
+                    $('.down>span').addClass('currentLike');
+                  }
+                });
+              }
               
+                
           });
           
         });
