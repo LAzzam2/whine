@@ -71,39 +71,27 @@ angular.module('whine', ['famous.angular', 'restangular'])
           var limit = 10;
           whineService.random(limit, function(whines) {
 
-              $('button').css('pointer-events','auto');
-              $('button>span').removeClass('currentLike');
-              
               $scope.whineList = whines;
               $scope.currentWhine = _.first(whines);
 
-              console.log($scope.currentWhine.author);
-              if($scope.currentWhine.author === 'undefined'){
-               currentWhine.author = 'hi';
-               console.log(currentWhine.author);
-              }
+              $('button').css('pointer-events','auto');
+              $('button>span').removeClass('currentLike');
 
               $('#next').css('pointer-events','auto');
               $('#whine').animate({
                 opacity: 1
               });
 
-              if($('.name').html().length > 0){
-                whineID = $scope.currentWhine._id;
-                $.get( 'api/whine/'+whineID+'/rate', function( data ) {
-                  $('.likes>h3>span').html(data.rating);
-                  $('button>span').removeClass('currentLike');
-                  if(data.rating > 0){
-                    $('.up').css('pointer-events','none');
-                    $('.up>span').addClass('currentLike');
-                  }else if (data.rating < 0){
-                    $('.down').css('pointer-events','none');
-                    $('.down>span').addClass('currentLike');
-                  }
-                });
+              rating = $scope.currentWhine.rating;
+              $('.likes>h3>span').html(rating);
+              $('button>span').removeClass('currentLike');
+              if(rating > 0){
+                $('.up').css('pointer-events','none');
+                $('.up>span').addClass('currentLike');
+              }else if (rating < 0){
+                $('.down').css('pointer-events','none');
+                $('.down>span').addClass('currentLike');
               }
-              
-                
           });
           
         });
