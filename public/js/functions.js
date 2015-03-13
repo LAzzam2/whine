@@ -170,7 +170,7 @@
         opacity: '0'
       }, 1000, function(){
         $('form').remove();
-        $('.wrap h1').html("Thanks... I guess?");
+        $('#postWhine .wrap h1').html("Thanks... I guess?");
         $('.wrap h1').css('text-align','center');
         $('.wrap h1').animate({opacity: '1'}, 1000);
       });

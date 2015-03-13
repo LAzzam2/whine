@@ -84,14 +84,25 @@ angular.module('whine', ['famous.angular', 'restangular'])
 
               rating = $scope.currentWhine.rating;
               $('.likes>h3>span').html(rating);
-              $('button>span').removeClass('currentLike');
-              if(rating > 0){
-                $('.up').css('pointer-events','none');
-                $('.up>span').addClass('currentLike');
-              }else if (rating < 0){
-                $('.down').css('pointer-events','none');
-                $('.down>span').addClass('currentLike');
+
+               if($('.name').html().length > 0){
+                whineID = $scope.currentWhine._id;
+                $.get( 'api/whine/'+whineID+'/rate', function( data ) {
+                  console.log('data: '+data.rating);
+                  if(data.rating > 0){
+                    $('button>span').removeClass('currentLike');
+                    $('.up').css('pointer-events','none');
+                    $('.up>span').addClass('currentLike');
+                  }else if (data.rating < 0){
+                    $('button>span').removeClass('currentLike');
+                    $('.down').css('pointer-events','none');
+                    $('.down>span').addClass('currentLike');
+                  }else {
+                    $('button>span').removeClass('currentLike');
+                  }
+                });
               }
+
           });
           
         });
